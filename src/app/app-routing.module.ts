@@ -4,10 +4,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
   { path: '', component: NotfoundComponent },
   { path: 'cat', component: CategoriesComponent },
+  { path: 'contactUs', component: ContactComponent }
 ];
 
 @NgModule({
