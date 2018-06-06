@@ -11,6 +11,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { CategoriesComponent } from './categories/categories.component';
     HeaderComponent,
     FooterComponent,
     NotfoundComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    ProfileComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
