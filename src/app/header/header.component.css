@@ -1,0 +1,7 @@
+.close {
+  opacity: 0.5;
+}
+
+#loginModal {
+  z-index: 10000;
+}

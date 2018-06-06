@@ -12,4 +12,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  closeSidebar() {
+    document.getElementById('btnSidebarClose').click();
+  }
+
+  closeLoginModal() {
+    document.getElementById('btnCloseLogin').click();
+  }
 }
