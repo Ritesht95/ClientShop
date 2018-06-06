@@ -13,6 +13,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProductComponent } from './product/product.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ProductComponent } from './product/product.component';
     CategoriesComponent,
     ProfileComponent,
     ProductComponent
+    ContactComponent
   ],
   imports: [
     BrowserModule,
