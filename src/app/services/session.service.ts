@@ -20,6 +20,7 @@ export class SessionService {
   }
 
   getUserLoggedIn() {
+    this.UserID = localStorage.getItem('CloggedIn');
     return this.IsUserLoggedIn;
   }
 
@@ -29,6 +30,7 @@ export class SessionService {
     PhoneNo: string,
     Name: string
   ) {
+    localStorage.setItem('CloggedIn', 'true');
     this.IsUserLoggedIn = true;
     this.setValues(UserID, Email, PhoneNo, Name);
   }

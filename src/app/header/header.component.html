@@ -32,6 +32,9 @@
             <li>
               <a href="contact.html">Contact</a>
             </li>
+            <li>
+              <a style="cursor: pointer" data-toggle="modal" data-target="#changePassModal">Change Password</a>
+            </li>
           </ul>
         </nav>
       </div>
@@ -175,12 +178,18 @@
             <div *ngIf="txtUsername1.errors?.pattern && txtUsername1.touched">
               <span class="text-danger">Username is Invalid</span>
             </div>
+            <div id="alertDivFPS">
+              <span *ngIf="successMessage !== null" class="text-success">{{successMessage}}</span>
+            </div>
+            <div id="alertDivFP">
+              <span *ngIf="errorMessage !== null" class="text-success">{{errorMessage}}</span>
+            </div>
           </div>
         </div>
       </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success" [disabled]="frm3.invalid">Send reset link</button>
+        <button type="button" class="btn btn-success" [disabled]="frm3.invalid" (click)="forgotPassword(txtUsername1.value);">Send reset link</button>
       </div>
     </div>
   </div>
@@ -208,7 +217,7 @@
           </div>
           <div class="form-group">
             <label class="control-label">Password</label>
-            <input type="passport" class="form-control" ngModel id="txtPassword1" name="txtPassword1" #txtPassword1="ngModel" required>
+            <input type="password" class="form-control" ngModel id="txtPassword1" name="txtPassword1" #txtPassword1="ngModel" required>
           </div>
           <div class="form-group">
             <label class="control-label">Gender</label>
@@ -258,13 +267,59 @@
       </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#alertModal" [disabled]="frm.invalid">Sign up</button>
+        <button type="button" class="btn btn-success" [disabled]="frm.invalid" (click)="signUp(txtName.value,gender.value,txtEmail.value,txtPassword1.value,txtContact.value);">Sign up</button>
       </div>
     </div>
   </div>
 </div>
 
-<div class="modal fade" id="alertModal" role="dialog">
+<div class="modal fade" id="changePassModal" tabindex="-1" role="dialog" aria-labelledby="changePassModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" id='btnCPClose1' class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
+      </div>
+      <div class="modal-body">
+        <form #frm="ngForm">
+          <div class="form-group">
+            <label for="txtOldPassword" class="control-label">Old Password</label>
+            <input type="password" ngModel #txtOldPassword="ngModel" name="txtOldPassword" class="form-control" id="txtOldPassword" placeholder="Password"
+              pattern="[a-zA-Z0-9]*" required>
+          </div>
+          <div class="form-group">
+            <label for="txtNewPassword" class="control-label">New Password</label>
+            <input type="password" ngModel #txtNewPassword="ngModel" name="txtNewPassword" class="form-control" id="txtNewPassword" placeholder="Password"
+              pattern="[a-zA-Z0-9]*" required>
+          </div>
+          <div class="form-group">
+            <label for="txtCPassword" class="control-label">Confirm Password</label>
+            <input type="password" ngModel #txtCPassword="ngModel" name="txtCPassword" class="form-control" id="txtCPassword" placeholder="Password"
+              pattern="[a-zA-Z0-9]*" required>
+          </div>
+        </form>
+        <div id='alertDivCP'>
+          <div ng-if="!errorMessage == null">
+            <span class="text-danger">{{errorMessage}}</span>
+          </div>
+        </div>
+        <div id='alertDivCPS'>
+          <div ng-if="!successMessage == null">
+            <span class="text-success">{{successMessage}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id='btnCPClose' type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="changePassword(txtCPassword.value, txtOldPassword.value);">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="modal fade" id="alertModal" role="dialog">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
@@ -281,4 +336,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
