@@ -12,21 +12,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  checkLogin() {
-    this.userObj.CheckLogin('riteshdlab@gmail.com', '1223').subscribe(
-      res => {
-        console.log(res);
-      }
-    );
-  }
 
-  signUp() {
-    this.userObj.signUp('Ritesh', 'M', 'riteshdlab@gmail.com', '123', '8866699878').subscribe(
-      res => {
-        console.log(res);
-      }
-    );
-  }
 
   ngOnInit() {
   }

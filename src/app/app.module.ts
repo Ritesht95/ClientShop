@@ -24,7 +24,7 @@ import { ContactComponent } from './contact/contact.component';
     NotfoundComponent,
     CategoriesComponent,
     ProfileComponent,
-    ProductComponent
+    ProductComponent,
     ContactComponent
   ],
   imports: [
