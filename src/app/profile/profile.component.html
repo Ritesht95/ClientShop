@@ -6,7 +6,8 @@
     <p class="head_para">Add Some Description</p>
     <div class="row profile-row">
       <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12 profile-intro-imagebox">
-        <img class="img-responsive profile-image" width="200" height="200" src="{{env}}Assets/UserImages/{{userData['ProfileImage']}}">
+        <img *ngIf="urls === null" class="img-responsive profile-image" width="200" height="200" src="{{env}}Assets/UserImages/{{userData['ProfileImage']}}">
+        <img *ngIf="urls !== null" class="img-responsive profile-image" width="200" height="200" src="{{urls}}">
       </div>
       <div class="col-lg-6 col-md-8 col-sm-8 col-xs-12 profile-intro-textbox">
         <div class="form-group">
@@ -55,9 +56,10 @@
           </button>
         </div>
         <div class="form-group col-lg-12">
-          <button class="btn btn-primary">
+          <label for="profileImage" class="btn btn-primary custom-file-upload">
             Change Image
-          </button>
+          </label>
+          <input (change)="imagePreview($event)" id="profileImage" type="file" />
         </div>
       </div>
     </div>
@@ -65,19 +67,26 @@
       <div class="profile-intro-imagebox">
         <h2>Your Addresses</h2>
         <div class="row">
-          <div class="address-box col-lg-3 col-md-4 col-sm-6 col-xs-12">
+          <div *ngFor="let addr of addressData" class="address-box col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="address-content">
               <div class="form-group">
-                <label>Ritesh Tailor</label>
+                <label>{{addr['AddressName']}}</label>
               </div>
               <div class="form-group">
-                <label>D/203, Legend Harmony Resi.
-                  <br> Opp. Swastik Villa
-                  <br> Pal
-                  <br> Surat-394510 </label>
+                <span *ngFor="let saddr of addr['Address']">
+                  {{saddr}}
+                  <br>
+                </span>
+                <span>
+                  {{addr['City']}} - {{addr['Pincode']}}
+                </span>
+                <br>
+                <span>
+                  {{addr['State']}}
+                </span>
               </div>
               <div class="form-group">
-                <label>8866699878</label>
+                <label>{{addr['AddressPhoneNo']}}</label>
               </div>
             </div>
           </div>
