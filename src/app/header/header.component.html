@@ -18,22 +18,25 @@
         <nav>
           <ul>
             <li>
-              <a href="index.html" class="active">Home</a>
+              <a routerLink="/" class="active">Home</a>
             </li>
-            <li>
-              <a href="/profile">Profile</a>
+            <li *ngIf="loggedIn">
+              <a routerLink="/profile">Profile</a>
             </li>
-            <li>
+            <li *ngIf="!loggedIn">
               <a style="cursor: pointer;" data-toggle="modal" data-target="#loginModal" (click)="closeSidebar();">Login</a>
             </li>
             <li>
-              <a href="/cat">Categories</a>
+              <a routerLink="/cat">Categories</a>
             </li>
             <li>
-              <a href="contact.html">Contact</a>
+              <a routerLink="contact.html">Contact</a>
             </li>
-            <li>
-              <a style="cursor: pointer" data-toggle="modal" data-target="#changePassModal">Change Password</a>
+            <li *ngIf="loggedIn">
+              <a style="cursor: pointer" data-toggle="modal" data-target="#changePassModal" (click)="closeSidebar();">Change Password</a>
+            </li>
+            <li *ngIf="loggedIn">
+              <a style="cursor: pointer" (click)="logout();">Logout</a>
             </li>
           </ul>
         </nav>
@@ -337,3 +340,4 @@
     </div>
   </div>
 </div> -->
+<script src="./assets/js/demo1.js"></script>
