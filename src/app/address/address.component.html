@@ -1,0 +1,115 @@
+<app-header></app-header>
+
+<!-- //banner -->
+<!-- top Products -->
+<div class="row">
+  <div class="ads-grid_shop">
+    <div class="shop_inner_inf">
+      <h3 class="head">Add Address</h3>
+      <div class="inner_section_w3ls">
+          <form role="form" #frm="ngForm">
+        <div class="col-md-6 col-md-offset-3 contact_grid_right">
+
+            <div class="col-md-6 col-sm-6 contact_left_grid">
+              <input type="text" name="type" placeholder="Name" required ngModel
+                #txtName="ngModel" pattern="[a-zA-z0-9 ]+">
+              <input type="text" name="Type" placeholder="Address Type" required
+                ngModel #txtType="ngModel" pattern="[a-zA-z]+">
+            </div>
+            <div class="col-md-6 col-sm-6 contact_left_grid">
+              <input type="text" name="PhoneNo" placeholder="Phone number"
+                ngModel #txtPhoneNo="ngModel" pattern="[0-9]{10}">
+              <input type="text" name="Locality" placeholder="Locality" required
+                ngModel #txtLocality="ngModel" pattern="[a-zA-z ]+"><br><br>
+            </div>
+            <div class="col-md-12 contact_left_grid">
+                <input type="text" name="txtAddress" placeholder="Address"
+                  required ngModel #txtAddress="ngModel" pattern="[a-zA-z0-9,/ ]+" height="100px"><br><br>
+            </div>
+            <div class="col-md-6 col-sm-6 contact_left_grid">
+              <input type="text" name="txtCity" placeholder="City" required
+                ngModel #txtCity="ngModel" pattern="[a-zA-z ]+">
+              <input type="text" name="txtState" placeholder="State" required
+                ngModel #txtState="ngModel" pattern="[a-zA-z ]+">
+            </div>
+            <div class="col-md-6 col-sm-6 contact_left_grid">
+              <input type="text" name="txtPincode" placeholder="Pincode"
+                required ngModel #txtPincode="ngModel" pattern="[a-zA-z ]+">
+              <input type="text" name="txtCountry" placeholder="Country"
+                required ngModel #txtCountry="ngModel" pattern="[a-zA-z ]+">
+              <br><br>
+            </div>
+            <!-- <input type="submit" value="Submit" [disabled]="frm.invalid"> -->
+            <div class="col-md-6">
+            <button  style="background-color: black;color: white;width:100%;height:50px;" class="btn" type="submit" [disabled]="frm.invalid">Submit</button>
+          </div>
+          <div class="col-md-6">
+                        <button  style="background-color: black;color: white;width:100%; height:50px;" class="btn" type="reset">Clear</button>
+          </div>
+
+          </div>
+        <div *ngIf="txtName.touched || txtType.touched || txtPhoneNo.touched
+              || txtLocality.touched || txtCity.touched || txtCountry.touched ||
+              txtState.touched || txtPincode.touched || txtAddress.touched" class="col-md-3">
+              <div *ngIf="txtName.errors?.required && txtName.touched">
+                <span class="text-danger">Name is required</span>
+              </div>
+              <div *ngIf="txtName.errors?.pattern && txtName.touched">
+                <span class="text-danger">Name is Invalid</span>
+              </div>
+              <div *ngIf="txtType.errors?.required && txtType.touched">
+                <span class="text-danger">Address Type is required</span>
+              </div>
+              <div *ngIf="txtType.errors?.pattern && txtType.touched">
+                <span class="text-danger">Address Type is Invalid</span>
+              </div>
+              <div *ngIf="txtPhoneNo.errors?.required && txtPhoneNo.touched">
+                <span class="text-danger">Phone Number is required</span>
+              </div>
+              <div *ngIf="txtPhoneNo.errors?.pattern && txtPhoneNo.touched">
+                <span class="text-danger">Phone Number is Invalid</span>
+              </div>
+              <div *ngIf="txtLocality.errors?.required && txtLocality.touched">
+                <span class="text-danger">Locality is required</span>
+              </div>
+              <div *ngIf="txtLocality.errors?.pattern && txtLocality.touched">
+                <span class="text-danger">Locality is Invalid</span>
+              </div>
+              <div *ngIf="txtAddress.errors?.required && txtAddress.touched">
+                <span class="text-danger">Address is required</span>
+              </div>
+              <div *ngIf="txtAddress.errors?.pattern && txtAddress.touched">
+                <span class="text-danger">Address is Invalid</span>
+              </div>
+              <div *ngIf="txtCity.errors?.required && txtCity.touched">
+                <span class="text-danger">City is required</span>
+              </div>
+              <div *ngIf="txtCity.errors?.pattern && txtCity.touched">
+                <span class="text-danger">City is Invalid</span>
+              </div>
+              <div *ngIf="txtState.errors?.required && txtState.touched">
+                <span class="text-danger">State is required</span>
+              </div>
+              <div *ngIf="txtState.errors?.pattern && txtState.touched">
+                <span class="text-danger">State is Invalid</span>
+              </div>
+              <div *ngIf="txtPincode.errors?.required && txtPincode.touched">
+                <span class="text-danger">Pincode is required</span>
+              </div>
+              <div *ngIf="txtPincode.errors?.pattern && txtPincode.touched">
+                <span class="text-danger">Pincode is Invalid</span>
+              </div>
+              <div *ngIf="txtCountry.errors?.required && txtCountry.touched">
+                <span class="text-danger">Country is required</span>
+              </div>
+              <div *ngIf="txtCountry.errors?.pattern && txtCountry.touched">
+                <span class="text-danger">Country is Invalid</span>
+              </div>
+            </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row"><br><br></div>
+<app-footer></app-footer>

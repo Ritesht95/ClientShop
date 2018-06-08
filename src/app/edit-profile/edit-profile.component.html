@@ -1,0 +1,71 @@
+<app-header></app-header>
+
+<!-- //banner -->
+<!-- top Products -->
+<div class="row">
+  <div class="ads-grid_shop">
+    <div class="shop_inner_inf">
+      <h3 class="head">Edit Profile</h3>
+      <div class="inner_section_w3ls">
+        <div class="col-md-6 col-md-offset-3 contact_grid_right">
+          <form action="#" method="post">
+            <div class="col-md-12 contact_left_grid">
+              <input type="text" name="Name" placeholder="Name" ngModel required
+                #Name="ngModel" pattern="[a-zA-Z ]*"><br><br>
+            </div>
+            <div class="col-md-12 contact_left_grid">
+              <input type="text" name="PhoneNo" placeholder="Phone number"
+                ngModel required #PhoneNo="ngModel" pattern="[0-9]{10}"><br><br>
+            </div>
+            <div class="col-md-12 contact_left_grid">
+              <input type="text" name="Email" placeholder="Email" ngModel
+                required #Email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"><br><br>
+            </div>
+            <div class="col-md-12 contact_left_grid">
+              <label class="control-label">Gender</label>
+              <br>
+              <input type="radio" value="male" name="gender" ngModel required
+                #gender="ngModel"> Male
+              <input type="radio" value="female" name="gender" ngModel
+                required
+                #gender="ngModel"> Female
+              <input type="radio" value="transgender" name="gender" ngModel
+                required #gender="ngModel"> Transgender
+              <br><br>
+            </div>
+            <div *ngIf="Name.touched || Email.touched || txtPassword1.touched ||
+              gender.touched">
+              <div *ngIf="Name.errors?.required && Name.touched">
+                <span class="text-danger">Name is required</span>
+              </div>
+              <div *ngIf="Name.errors?.pattern && Name.touched">
+                <span class="text-danger">Name is Invalid</span>
+              </div>
+              <div *ngIf="PhoneNo.errors?.required && PhoneNo.touched">
+                <span class="text-danger">Phone Number is required</span>
+              </div>
+              <div *ngIf="PhoneNo.errors?.pattern && PhoneNo.touched">
+                <span class="text-danger">Phone Number is Invalid</span>
+              </div>
+              <div *ngIf="Email.errors?.required && Email.touched">
+                <span class="text-danger">Email is required</span>
+              </div>
+              <div *ngIf="Email.errors?.pattern && Email.touched">
+                <span class="text-danger">Email is Invalid</span>
+              </div>
+              <div *ngIf="gender.errors?.required && gender.touched">
+                <span class="text-danger">Gender is required</span>
+              </div>
+              <br><br>
+            </div>
+            <input type="submit" value="Submit">
+            <input type="reset" value="Clear">
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row"><br><br></div>
+<app-footer></app-footer>
