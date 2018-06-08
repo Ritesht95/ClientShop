@@ -104,7 +104,7 @@ a:focus {
     color: #2e2f2f;
 }
 .navbar-brand i {
-    padding: 0.5em 0.5em 0.5em 0em;
+    padding: 0.5em 0.5em 0.5em 1em;
     font-style: normal;
     display: inline-block;
 }
@@ -419,7 +419,7 @@ li.dropdown.act a.w3_icons_act {
     padding: 2em 3em;
 	color: #fff;
 	letter-spacing: 3px;
-    
+
 }
 
 .cd-search input::-webkit-input-placeholder {
@@ -1200,7 +1200,7 @@ p.copy-right-w3ls-agileits a{
 	text-decoration:none;
 }
 p.copy-right-w3ls-agileits a:hover{
-color: #2fdab8;	
+color: #2fdab8;
 }
 .footer-left h2 a {
     font-size: 0.9em;
@@ -1365,7 +1365,7 @@ p.head_para {
     }
     .top_nav_right {
         right: 0%;
-    } 
+    }
     .top_nav_right {
         right: -1%;
     }
@@ -1700,7 +1700,7 @@ p.head_para {
         float: left;
         width: 100%;
     }
-    
+
 }
 @media(max-width:768px){
 	.top_nav_right {
@@ -1959,7 +1959,7 @@ p.head_para {
     }
 }
 @media(max-width:414px){
-	
+
     .navbar-brand {
         font-size: 0.55em;
         height: 42px;
