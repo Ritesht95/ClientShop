@@ -14,6 +14,8 @@ import { CategoriesComponent } from './categories/categories.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProductComponent } from './product/product.component';
 import { ContactComponent } from './contact/contact.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { ContactComponent } from './contact/contact.component';
     CategoriesComponent,
     ProfileComponent,
     ProductComponent,
-    ContactComponent
+    ContactComponent,
+    ResetpasswordComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

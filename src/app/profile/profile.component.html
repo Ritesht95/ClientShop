@@ -6,7 +6,7 @@
     <p class="head_para">Add Some Description</p>
     <div class="row profile-row">
       <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12 profile-intro-imagebox">
-        <img src="../../assets/images/g2.jpg">
+        <img class="img-responsive profile-image" width="200" height="200" src="{{env}}Assets/UserImages/{{userData['ProfileImage']}}">
       </div>
       <div class="col-lg-6 col-md-8 col-sm-8 col-xs-12 profile-intro-textbox">
         <div class="form-group">
@@ -14,7 +14,7 @@
             <h3>Name: </h3>
           </label>&nbsp;
           <label class="lead text-value">
-            <h3>Ritesh Tailor </h3>
+            <h3>{{userData['Name']}}</h3>
           </label>
         </div>
         <div class="form-group">
@@ -22,7 +22,8 @@
             <h3>Gender: </h3>
           </label>&nbsp;
           <label class="lead text-value">
-            <h3>Male </h3>
+            <h3 *ngIf="userData['Gender'] === 'M'">Male</h3>
+            <h3 *ngIf="userData['Gender'] === 'F'">Female</h3>
           </label>
         </div>
         <div class="form-group">
@@ -30,7 +31,7 @@
             <h3>Email: </h3>
           </label>&nbsp;
           <label class="lead text-value">
-            <h3>riteshtailor20@outlook.com </h3>
+            <h3>{{userData['Email']}}</h3>
           </label>
         </div>
         <div class="form-group">
@@ -38,7 +39,7 @@
             <h3>Phone No: </h3>
           </label>&nbsp;
           <label class="lead text-value">
-            <h3>8866699878 </h3>
+            <h3>{{userData['PhoneNO']}}</h3>
           </label>
         </div>
       </div>

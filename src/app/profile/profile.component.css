@@ -24,7 +24,12 @@
 
 label.text-title {
   width: 130px;
-  text-align: right;
+  text-align: left;
+}
+
+img.profile-image {
+  height: 100%;
+  width: 100%;
 }
 
 label.text-value {

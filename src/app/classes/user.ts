@@ -218,5 +218,97 @@ export class User {
     );
   }
 
+
+  forgotPassword(Username: string): any {
+    const headers = new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+    });
+    const options = new RequestOptions({ headers: headers });
+    const data: object = {
+      username: Username
+    };
+
+    return (
+      this.http
+        .post(environment.apiURL + 'User/ForgetPassword.php', data, options)
+        .pipe(map(res => res.json()))
+    );
+  }
+
+  checkRandomString(RandomString: string) {
+    const headers = new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+    });
+    const options = new RequestOptions({ headers: headers });
+    const data: object = { rand: RandomString };
+
+    return (
+      this.http
+        .post(
+          environment.apiURL + 'User/CheckRandomString.php',
+          data,
+          options
+        )
+        // tslint:disable-next-line:no-shadowed-variable
+        .pipe(map(res => res.json()))
+    );
+  }
+
+  resetPassword(
+    Username: string,
+    VerificationCode: string,
+    NewPassword: string
+  ) {
+    const headers = new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+    });
+    const options = new RequestOptions({ headers: headers });
+    const data: object = {
+      username: Username,
+      verificationcode: VerificationCode,
+      newpassword: NewPassword
+    };
+
+    return (
+      this.http
+        .post(
+          environment.apiURL + 'User/ResetPassword.php',
+          data,
+          options
+        )
+        // tslint:disable-next-line:no-shadowed-variable
+        .pipe(map(res => res.json()))
+    );
+  }
+
+
+  changePassword(OldPassword: string, NewPassword: string, UserID: string): any {
+    const headers = new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+    });
+    const options = new RequestOptions({ headers: headers });
+    const data: object = {
+      oldpassword: OldPassword,
+      newpassword: NewPassword,
+      ID: UserID
+    };
+
+    return (
+      this.http
+        .post(
+          environment.apiURL + 'User/ChangePassword.php',
+          data,
+          options
+        )
+        // tslint:disable-next-line:no-shadowed-variable
+        .pipe(map(res => res.json()))
+    );
+  }
+
+  getUserData(UserID: string) {
+    return this.http
+      .get(environment.apiURL + 'User/UserData.php?id=' + UserID)
+      .pipe(map(res => res.json()));
+  }
   /* Methods */
 }
