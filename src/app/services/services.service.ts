@@ -18,4 +18,10 @@ export class ServicesService {
       .pipe(map(res => res.json()));
   }
 
+  getProduct(id: number) {
+    return this._http
+      .get(environment.apiURL + 'Product/GetCategoryProducts.php?id=' + id)
+      .pipe(map(res => res.json()));
+  }
+
 }

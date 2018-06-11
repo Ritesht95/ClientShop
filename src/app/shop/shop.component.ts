@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ServicesService } from '../services/services.service';
+import { environment } from '../../environments/environment';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-shop',
@@ -7,9 +12,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShopComponent implements OnInit {
 
-  constructor() { }
+  id: number;
+  env = environment.apiURL;
+  product: any = '';
+  name: any = '';
+
+  constructor(private servicesservice: ServicesService, private actRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.env = environment.apiURL;
+    this.actRoute.queryParams.subscribe(param => {
+      this.id = param['id'];
+    });
+    this.servicesservice.getProduct(4).subscribe(res => {
+      if (res['key'] === 'false') {
+        this.product = res;
+        console.log(this.product);
+      } else {
+        this.product = res['records'];
+        console.log(this.product);
+      }
+    });
   }
 
 }
