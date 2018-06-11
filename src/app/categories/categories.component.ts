@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Category } from '../classes/category';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-categories',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriesComponent implements OnInit {
 
-  constructor() { }
+  categoriesData = [];
+  env = environment.apiURL;
+
+  constructor(private categoryObj: Category) { }
 
   ngOnInit() {
+    this.categoryObj.getAllCategories().subscribe(
+      res => {
+        this.categoriesData = res['records'];
+      }
+    );
   }
 
 }

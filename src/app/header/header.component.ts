@@ -19,8 +19,17 @@ export class HeaderComponent implements OnInit {
   var1: any = '';
   var2: any = '';
   var3: any = '';
+  flagEmail = false;
+  flagPhoneNo = false;
 
-  constructor(private userObj: User, private sessionservice: SessionService, private router: Router, private services: ServicesService) {}
+  constructor(
+    private userObj: User,
+    private sessionservice: SessionService,
+    private router: Router,
+    private services: ServicesService
+  ) {
+    this.loadScripts();
+  }
 
   ngOnInit() {
     this.loggedIn = this.sessionservice.getUserLoggedIn();
@@ -36,18 +45,30 @@ export class HeaderComponent implements OnInit {
         this.var3 = this.var1[0];
         this.var2 = this.var1[1];
         console.log( this.webInfo);
-        document
-          .getElementById('profileImageIn')
-          .setAttribute(
-            'src',
-            environment.apiURL + 'Assets/WebsiteLogo/' + this.webInfo.Logo
-          );
-        document
-          .getElementById('profileImageIn')
-          .setAttribute('alt', this.webInfo.LogoAlt);
+        // document
+        //   .getElementById('profileImageIn')
+        //   .setAttribute(
+        //     'src',
+        //     environment.apiURL + 'Assets/WebsiteLogo/' + this.webInfo.Logo
+        //   );
+        // document
+        //   .getElementById('profileImageIn')
+        //   .setAttribute('alt', this.webInfo.LogoAlt);
       }
     });
 
+  }
+
+  loadScripts() {
+    const dynamicScripts = ['../../assets/js/demo1.js'];
+    for (let i = 0; i < dynamicScripts.length; i++) {
+      const node = document.createElement('script');
+      node.src = dynamicScripts[i];
+      node.type = 'text/javascript';
+      node.async = false;
+      node.charset = 'utf-8';
+      document.getElementsByTagName('head')[0].appendChild(node);
+    }
   }
 
   timeout(val: boolean, element: string) {
@@ -79,7 +100,12 @@ export class HeaderComponent implements OnInit {
         this.timeout(false, 'alertDivLogin');
       } else {
         this.closeLoginModal();
-        this.sessionservice.setUserLoggedIn(res['UserID'], res['Email'], res['PhoneNO'], res['Name']);
+        this.sessionservice.setUserLoggedIn(
+          res['UserID'],
+          res['Email'],
+          res['PhoneNO'],
+          res['Name']
+        );
         this.loggedIn = this.sessionservice.getUserLoggedIn();
         this.router.navigate(['profile']);
       }
@@ -87,28 +113,28 @@ export class HeaderComponent implements OnInit {
   }
 
   forgotPassword(Username: string) {
-    this.userObj.forgotPassword(Username).subscribe(
-      res => {
-        if (res['key'] === 'false') {
-          this.errorMessage = 'Something went wrong!';
-          this.ShowAlert(true, 'alertDivFP');
-          this.timeout(false, 'alertDivFP');
-        } else if (res['key'] === 'nexist') {
-          this.errorMessage = 'This Email or Phone no is not registered with us!';
-          this.ShowAlert(true, 'alertDivFP');
-          this.timeout(false, 'alertDivFP');
-        } else {
-          this.successMessage = 'Reset link and Verification Code has been sent to your mail.';
-          this.ShowAlert(true, 'alertDivFPS');
-          this.timeout(false, 'alertDivFPS');
-        }
+    this.userObj.forgotPassword(Username).subscribe(res => {
+      if (res['key'] === 'false') {
+        this.errorMessage = 'Something went wrong!';
+        this.ShowAlert(true, 'alertDivFP');
+        this.timeout(false, 'alertDivFP');
+      } else if (res['key'] === 'nexist') {
+        this.errorMessage = 'This Email or Phone no is not registered with us!';
+        this.ShowAlert(true, 'alertDivFP');
+        this.timeout(false, 'alertDivFP');
+      } else {
+        this.successMessage =
+          'Reset link and Verification Code has been sent to your mail.';
+        this.ShowAlert(true, 'alertDivFPS');
+        this.timeout(false, 'alertDivFPS');
       }
-    );
+    });
   }
 
   changePassword(NewPassword: string, OldPassword: string) {
-    this.userObj.changePassword(OldPassword, NewPassword, '1').subscribe(
-      res => {
+    this.userObj
+      .changePassword(OldPassword, NewPassword, '1')
+      .subscribe(res => {
         if (res['key'] === 'incorrect') {
           // Wrong old Password
           this.errorMessage = 'Wrong old Password';
@@ -134,8 +160,7 @@ export class HeaderComponent implements OnInit {
           this.ShowAlert(true, 'alertDivCPS');
           this.timeout(false, 'alertDivCPS');
         }
-      }
-    );
+      });
   }
 
   signUp(
@@ -155,7 +180,8 @@ export class HeaderComponent implements OnInit {
           this.timeout(false, 'alertDivRegS');
           (<HTMLInputElement>document.getElementById('txtName')).value = '';
           (<HTMLInputElement>document.getElementById('txtEmail')).value = '';
-          (<HTMLInputElement>document.getElementById('txtPassword1')).value = '';
+          (<HTMLInputElement>document.getElementById('txtPassword1')).value =
+            '';
           (<HTMLInputElement>document.getElementById('gender')).value = '';
           (<HTMLInputElement>document.getElementById('txtContact')).value = '';
         } else {
@@ -164,5 +190,41 @@ export class HeaderComponent implements OnInit {
           this.timeout(false, 'alertDivReg');
         }
       });
+  }
+
+  logout() {
+    this.sessionservice.logoutUser();
+    this.router.navigate(['']);
+  }
+
+
+  checkEmail(Email: string) {
+    this.userObj.checkEmail(Email).subscribe(
+      res => {
+        if (res['key'] === 'false') {
+          this.errorMessage = 'Email is already registered.';
+          this.ShowAlert(true, 'alertDivReg');
+          this.timeout(false, 'alertDivReg');
+          this.flagEmail = true;
+        } else {
+
+        }
+      }
+    );
+  }
+
+  checkPhoneNo(PhoneNo: string) {
+    this.userObj.checkPhoneNo(PhoneNo).subscribe(
+      res => {
+        if (res['key'] === 'false') {
+          this.errorMessage = 'Phone number is already registered.';
+          this.ShowAlert(true, 'alertDivReg');
+          this.timeout(false, 'alertDivReg');
+          this.flagEmail = true;
+        } else {
+
+        }
+      }
+    );
   }
 }

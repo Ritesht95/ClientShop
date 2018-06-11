@@ -18,24 +18,25 @@
         <nav>
           <ul>
             <li>
-              <a href="index.html" class="active">Home</a>
+              <a routerLink="/" class="active">Home</a>
+            </li>
+            <li *ngIf="loggedIn">
+              <a routerLink="/profile">Profile</a>
+            </li>
+            <li *ngIf="!loggedIn">
+              <a style="cursor: pointer;" data-toggle="modal" data-target="#loginModal" (click)="closeSidebar();">Login</a>
             </li>
             <li>
-              <a href="/profile">Profile</a>
+              <a routerLink="/cat">Categories</a>
             </li>
             <li>
-              <a style="cursor: pointer;" data-toggle="modal"
-                data-target="#loginModal" (click)="closeSidebar();">Login</a>
+              <a routerLink="contact.html">Contact</a>
             </li>
-            <li>
-              <a href="/cat">Categories</a>
+            <li *ngIf="loggedIn">
+              <a style="cursor: pointer" data-toggle="modal" data-target="#changePassModal" (click)="closeSidebar();">Change Password</a>
             </li>
-            <li>
-              <a href="contact.html">Contact</a>
-            </li>
-            <li>
-              <a style="cursor: pointer" data-toggle="modal"
-                data-target="#changePassModal">Change Password</a>
+            <li *ngIf="loggedIn">
+              <a style="cursor: pointer" (click)="logout();">Logout</a>
             </li>
           </ul>
         </nav>
@@ -239,10 +240,8 @@
           </div>
           <div class="form-group">
             <label class="control-label">Email</label>
-            <input type="text" class="form-control" id="txtEmail" ngModel
-              name="txtEmail" required
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-              #txtEmail="ngModel">
+            <input type="text" class="form-control" id="txtEmail" ngModel name="txtEmail" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+              #txtEmail="ngModel" (blur)="checkEmail(txtEmail.value);" >
           </div>
           <div class="form-group">
             <label class="control-label">Password</label>
@@ -262,10 +261,8 @@
           </div>
           <div class="form-group">
             <label class="control-label">Phone Number</label>
-            <input type="text" class="form-control" id="txtContact"
-              name="txtContact" #txtContact="ngModel" placeholder="Contact
-              Number"
-              required pattern="[0-9]{10}" ngModel>
+            <input type="text" class="form-control" id="txtContact" name="txtContact" #txtContact="ngModel" placeholder="Contact Number"
+              required pattern="[0-9]{10}" ngModel (blur)="checkPhoneNo(txtContact.value);">
           </div>
           <div *ngIf="txtName.touched || txtContact.touched || txtEmail.touched
             || txtPassword1.touched || gender.touched">
@@ -297,16 +294,14 @@
               <span *ngIf="successMessage !== null" class="text-success">{{successMessage}}</span>
             </div>
             <div id="alertDivReg">
-              <span *ngIf="errorMessage !== null" class="text-success">{{errorMessage}}</span>
+              <span *ngIf="errorMessage !== null" class="text-danger">{{errorMessage}}</span>
             </div>
           </div>
         </div>
       </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success" [disabled]="frm.invalid"
-          (click)="signUp(txtName.value,gender.value,txtEmail.value,txtPassword1.value,txtContact.value);">Sign
-          up</button>
+        <button type="button" class="btn btn-success" [disabled]="frm.invalid || flagEmail || flagPhoneNo" (click)="signUp(txtName.value,gender.value,txtEmail.value,txtPassword1.value,txtContact.value);">Sign up</button>
       </div>
     </div>
   </div>
@@ -368,3 +363,23 @@
     </div>
   </div>
 </div>
+<!-- <div class="modal fade" id="alertModal" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Verify your Email &nbsp;
+          <i class="fa fa-check-circle"></i>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <p>Verification link send to your Email</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+<script src="./assets/js/demo1.js"></script>
+
