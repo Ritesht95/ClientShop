@@ -46,9 +46,9 @@
       </div>
       <div class="col-lg-3 col-md-6 col-sm-4 col-xs-12 profile-intro-buttonbox">
         <div class="form-group col-lg-12">
-          <button class="btn btn-info">
+          <a routerLink="/editProfile" [queryParams]="{id: userData['UserID']}" class="btn btn-info">
             Edit Profile
-          </button>
+          </a>
         </div>
         <div class="form-group col-lg-12">
           <button class="btn btn-warning">
@@ -60,6 +60,11 @@
             Change Image
           </label>
           <input (change)="imagePreview($event)" id="profileImage" type="file" />
+        </div>
+        <div class="form-group col-lg-12">
+          <button class="btn btn-danger" (click)="removeUserImage();">
+            Remove Image
+          </button>
         </div>
       </div>
     </div>

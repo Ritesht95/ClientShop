@@ -19,6 +19,8 @@ export class HeaderComponent implements OnInit {
   var1: any = '';
   var2: any = '';
   var3: any = '';
+  flagEmail = false;
+  flagPhoneNo = false;
 
   constructor(
     private userObj: User,
@@ -43,15 +45,15 @@ export class HeaderComponent implements OnInit {
         this.var3 = this.var1[0];
         this.var2 = this.var1[1];
         console.log( this.webInfo);
-        document
-          .getElementById('profileImageIn')
-          .setAttribute(
-            'src',
-            environment.apiURL + 'Assets/WebsiteLogo/' + this.webInfo.Logo
-          );
-        document
-          .getElementById('profileImageIn')
-          .setAttribute('alt', this.webInfo.LogoAlt);
+        // document
+        //   .getElementById('profileImageIn')
+        //   .setAttribute(
+        //     'src',
+        //     environment.apiURL + 'Assets/WebsiteLogo/' + this.webInfo.Logo
+        //   );
+        // document
+        //   .getElementById('profileImageIn')
+        //   .setAttribute('alt', this.webInfo.LogoAlt);
       }
     });
 
@@ -193,5 +195,36 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.sessionservice.logoutUser();
     this.router.navigate(['']);
+  }
+
+
+  checkEmail(Email: string) {
+    this.userObj.checkEmail(Email).subscribe(
+      res => {
+        if (res['key'] === 'false') {
+          this.errorMessage = 'Email is already registered.';
+          this.ShowAlert(true, 'alertDivReg');
+          this.timeout(false, 'alertDivReg');
+          this.flagEmail = true;
+        } else {
+
+        }
+      }
+    );
+  }
+
+  checkPhoneNo(PhoneNo: string) {
+    this.userObj.checkPhoneNo(PhoneNo).subscribe(
+      res => {
+        if (res['key'] === 'false') {
+          this.errorMessage = 'Phone number is already registered.';
+          this.ShowAlert(true, 'alertDivReg');
+          this.timeout(false, 'alertDivReg');
+          this.flagEmail = true;
+        } else {
+
+        }
+      }
+    );
   }
 }

@@ -311,7 +311,6 @@ export class User {
   }
 
   setUserImage(formData: FormData) {
-    console.log('startserve');
     const endpoint = environment.apiURL + 'User/ProfileImageUpdate.php';
     return this.http.post(endpoint, formData).pipe(
       map(
@@ -322,5 +321,108 @@ export class User {
       )
     );
   }
+
+  checkEmail(Email: string) {
+    const headers = new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+    });
+    const options = new RequestOptions({ headers: headers });
+    const data: object = {
+      Email: Email
+    };
+
+    return this.http
+      .post(environment.apiURL + 'User/CheckEmail.php', data, options)
+      .pipe(map(res => res.json()));
+  }
+
+  checkPhoneNo(PhoneNo: string) {
+    const headers = new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+    });
+    const options = new RequestOptions({ headers: headers });
+    const data: object = {
+      PhoneNo: PhoneNo
+    };
+
+    return this.http
+      .post(environment.apiURL + 'User/CheckPhoneNo.php', data, options)
+      .pipe(map(res => res.json()));
+  }
+
+  getSingleAddress(ID: string) {
+    return this.http
+      .get(environment.apiURL + 'User/ViewSingleAddress.php?id=' + ID)
+      .pipe(map(res => res.json()));
+  }
+
+  updateProfile(
+    Name: string,
+    PhoneNo: string,
+    Email: string,
+    Gender: string,
+    ID: string
+  ) {
+    const headers = new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+    });
+    const options = new RequestOptions({ headers: headers });
+    const data: object = {
+      Name: Name,
+      Gender: Gender,
+      Email: Email,
+      ID: ID,
+      PhoneNo: PhoneNo
+    };
+
+    return this.http
+      .post(environment.apiURL + 'User/UpdateProfile.php', data, options)
+      .pipe(map(res => res.json()));
+  }
+
+  addAddress(
+    UserID: string,
+    AddressID: string,
+    Name: string,
+    PhoneNo: string,
+    Pincode: string,
+    Locality: string,
+    Address: string,
+    City: string,
+    State: string,
+    Landmark: string,
+    Country: string,
+    AddressType: string
+  ) {
+    const headers = new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+    });
+    const options = new RequestOptions({ headers: headers });
+    const data: object = {
+      UserID: UserID,
+      AddressID: AddressID,
+      Name: Name,
+      PhoneNo: PhoneNo,
+      Pincode: Pincode,
+      Locality: Locality,
+      Address: Address,
+      City: City,
+      State: State,
+      Landmark: Landmark,
+      Country: Country,
+      AddressType: AddressType
+    };
+
+    return this.http
+      .post(environment.apiURL + 'User/AddAddress.php', data, options)
+      .pipe(map(res => res.json()));
+  }
+
+  removeUserImage(UserID: string) {
+    return this.http
+    .get(environment.apiURL + 'User/RemoveImage.php?id=' + UserID)
+    .pipe(map(res => res.json()));
+  }
+
   /* Methods */
 }

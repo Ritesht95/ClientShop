@@ -33,15 +33,15 @@ export class FooterComponent implements OnInit {
         this.var1 = this.webInfo.Name.split(' ');
         this.var3 = this.var1[0];
         this.var2 = this.var1[1];
-        document
-          .getElementById('profileImageIn')
-          .setAttribute(
-            'src',
-            environment.apiURL + 'Assets/WebsiteLogo/' + this.webInfo.Logo
-          );
-        document
-          .getElementById('profileImageIn')
-          .setAttribute('alt', this.webInfo.LogoAlt);
+        // document
+        //   .getElementById('profileImageIn')
+        //   .setAttribute(
+        //     'src',
+        //     environment.apiURL + 'Assets/WebsiteLogo/' + this.webInfo.Logo
+        //   );
+        // document
+        //   .getElementById('profileImageIn')
+        //   .setAttribute('alt', this.webInfo.LogoAlt);
       }
     });
   }

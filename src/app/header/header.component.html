@@ -216,7 +216,7 @@
           <div class="form-group">
             <label class="control-label">Email</label>
             <input type="text" class="form-control" id="txtEmail" ngModel name="txtEmail" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-              #txtEmail="ngModel">
+              #txtEmail="ngModel" (blur)="checkEmail(txtEmail.value);" >
           </div>
           <div class="form-group">
             <label class="control-label">Password</label>
@@ -232,7 +232,7 @@
           <div class="form-group">
             <label class="control-label">Phone Number</label>
             <input type="text" class="form-control" id="txtContact" name="txtContact" #txtContact="ngModel" placeholder="Contact Number"
-              required pattern="[0-9]{10}" ngModel>
+              required pattern="[0-9]{10}" ngModel (blur)="checkPhoneNo(txtContact.value);">
           </div>
           <div *ngIf="txtName.touched || txtContact.touched || txtEmail.touched || txtPassword1.touched || gender.touched">
             <div *ngIf="txtName.errors?.required && txtName.touched">
@@ -263,14 +263,14 @@
               <span *ngIf="successMessage !== null" class="text-success">{{successMessage}}</span>
             </div>
             <div id="alertDivReg">
-              <span *ngIf="errorMessage !== null" class="text-success">{{errorMessage}}</span>
+              <span *ngIf="errorMessage !== null" class="text-danger">{{errorMessage}}</span>
             </div>
           </div>
         </div>
       </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success" [disabled]="frm.invalid" (click)="signUp(txtName.value,gender.value,txtEmail.value,txtPassword1.value,txtContact.value);">Sign up</button>
+        <button type="button" class="btn btn-success" [disabled]="frm.invalid || flagEmail || flagPhoneNo" (click)="signUp(txtName.value,gender.value,txtEmail.value,txtPassword1.value,txtContact.value);">Sign up</button>
       </div>
     </div>
   </div>
