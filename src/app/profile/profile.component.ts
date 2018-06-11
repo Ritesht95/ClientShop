@@ -40,6 +40,14 @@ export class ProfileComponent implements OnInit {
       });
   }
 
+  removeUserImage() {
+    this.objUser.removeUserImage(this.sessionservice.getUserID()).subscribe(
+      res => {
+        this.ngOnInit();
+      }
+    );
+  }
+
   imagePreview(event: any) {
     const files = event.target.files;
     // console.log(files);
@@ -67,33 +75,6 @@ export class ProfileComponent implements OnInit {
     reader.readAsDataURL(files[0]);
 
   }
-
-  // validateFile(name: String) {
-  //   const ext: string = name.substring(name.lastIndexOf('.') + 1);
-  //   if (
-  //     ext.toLowerCase() === 'png' ||
-  //     ext.toLowerCase() === 'jpg' ||
-  //     ext.toLowerCase() === 'jpeg'
-  //   ) {
-  //     this.flag = false;
-  //     return true;
-  //   } else {
-  //     this.flag = true;
-  //     return false;
-  //   }
-  // }
-
-  // upload(event: any) {
-  //   const files = this.elem.nativeElement.querySelector('#profileImage').files;
-  //   this.formData.append('image', files[0], files[0].name);
-  //   this.formData.append('Id', this.sessionservice.getUserID());
-  //   if (!this.validateFile(files[0].name)) {
-  //     alert('Selected file format is not supported');
-  //     return false;
-  //   } else {
-  //     this.fileToUpload = files.item(0);
-  //   }
-  // }
 
   validateFile(name) {
     const ext = name.substring(name.lastIndexOf('.') + 1);
