@@ -1,11 +1,13 @@
 .category-box {
-  display: flex;
-  height: 200px;
+  height: 180px;
   padding: 10%;
-  align-items: center;
   justify-content: center;
   color: white;
-  background: linear-gradient(rgba(255, 255, 255, .2), rgba(255, 255, 255, .2)), url('../../assets/images/abstract-bg.jpg');
+  background-color: navy;
+}
+
+.box-title{
+  height: 40px!important;
 }
 
 .box-outer {
@@ -13,7 +15,8 @@
 }
 
 .category-box:hover  {
-  box-shadow: 2px 2px 2px 10px lightblue;
+  box-shadow: 2px 2px 10px #000;
+  cursor: pointer;
 }
 
 .category-box h3 {

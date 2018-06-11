@@ -18,24 +18,37 @@
         <nav>
           <ul>
             <li>
-              <a href="index.html" class="active">Home</a>
+              <a routerLink="/" class="active">Home</a>
+            </li>
+            <li *ngIf="loggedIn">
+              <a routerLink="/profile">Profile</a>
+            </li>
+
+            <li>
+              <!-- <a style="cursor: pointer;" data-toggle="modal"
+                data-target="#loginModal" (click)="closeSidebar();">Login</a> -->
+                </li>
+            <li *ngIf="!loggedIn">
+              <a style="cursor: pointer;" data-toggle="modal" data-target="#loginModal" (click)="closeSidebar();">Login</a>
+
             </li>
             <li>
-              <a href="/profile">Profile</a>
+              <a routerLink="/cat">Categories</a>
             </li>
             <li>
-              <a style="cursor: pointer;" data-toggle="modal"
-                data-target="#loginModal" (click)="closeSidebar();">Login</a>
+              <a routerLink="contact.html">Contact</a>
             </li>
-            <li>
-              <a href="/cat">Categories</a>
-            </li>
-            <li>
-              <a href="contact.html">Contact</a>
-            </li>
+
             <li>
               <a style="cursor: pointer" data-toggle="modal"
                 data-target="#changePassModal">Change Password</a>
+
+            <li *ngIf="loggedIn">
+              <a style="cursor: pointer" data-toggle="modal" data-target="#changePassModal" (click)="closeSidebar();">Change Password</a>
+            </li>
+            <li *ngIf="loggedIn">
+              <a style="cursor: pointer" (click)="logout();">Logout</a>
+
             </li>
           </ul>
         </nav>
@@ -230,24 +243,24 @@
         </button>
         <h4 class="modal-title" id="exampleModalLongTitle">Sign up</h4>
       </div>
-      <form role="form" #frm="ngForm">
+      <form role="form" #frm4="ngForm">
         <div class="modal-body">
           <div class="form-group">
             <label class="control-label">Name</label>
-            <input type="text" class="form-control" ngModel #txtName="ngModel"
-              name="txtName" id="txtName" required pattern="[a-zA-Z ]*">
+            <input type="text" class="form-control" ngModel #txtName4="ngModel"
+              name="txtName4" id="txtName4" required pattern="[a-zA-Z ]+">
           </div>
           <div class="form-group">
             <label class="control-label">Email</label>
-            <input type="text" class="form-control" id="txtEmail" ngModel
-              name="txtEmail" required
+            <input type="text" class="form-control" id="txtEmail4" ngModel
+              name="txtEmail4" required
               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-              #txtEmail="ngModel">
+              #txtEmail4="ngModel">
           </div>
           <div class="form-group">
             <label class="control-label">Password</label>
             <input type="password" class="form-control" ngModel
-              id="txtPassword1" name="txtPassword1" #txtPassword1="ngModel"
+              id="txtPassword4" name="txtPassword4" #txtPassword4="ngModel"
               required>
           </div>
           <div class="form-group">
@@ -262,35 +275,35 @@
           </div>
           <div class="form-group">
             <label class="control-label">Phone Number</label>
-            <input type="text" class="form-control" id="txtContact"
-              name="txtContact" #txtContact="ngModel" placeholder="Contact
+            <input type="text" class="form-control" id="txtContact4"
+              name="txtContact4" #txtContact4="ngModel" placeholder="Contact
               Number"
               required pattern="[0-9]{10}" ngModel>
           </div>
-          <div *ngIf="txtName.touched || txtContact.touched || txtEmail.touched
-            || txtPassword1.touched || gender.touched">
-            <div *ngIf="txtName.errors?.required && txtName.touched">
+          <div *ngIf="txtName4.touched || txtContact4.touched || txtEmail4.touched
+            || txtPassword4.touched || gender.touched">
+            <div *ngIf="txtName4.errors?.required && txtName4.touched">
               <span class="text-danger">Name is required</span>
             </div>
-            <div *ngIf="txtName.errors?.pattern && txtName.touched">
+            <div *ngIf="txtName4.errors?.pattern && txtName4.touched">
               <span class="text-danger">Name is Invalid</span>
             </div>
-            <div *ngIf="txtEmail.errors?.required && txtEmail.touched">
+            <div *ngIf="txtEmail4.errors?.required && txtEmail4.touched">
               <span class="text-danger">Email is required</span>
             </div>
-            <div *ngIf="txtEmail.errors?.pattern && txtEmail.touched">
+            <div *ngIf="txtEmail4.errors?.pattern && txtEmail4.touched">
               <span class="text-danger">Email is Invalid</span>
             </div>
-            <div *ngIf="txtPassword1.errors?.required && txtPassword1.touched">
+            <div *ngIf="txtPassword4.errors?.required && txtPassword4.touched">
               <span class="text-danger">Password is required</span>
             </div>
             <div *ngIf="gender.invalid && gender.touched">
               <span class="text-danger">Gender is required</span>
             </div>
-            <div *ngIf="txtContact.errors?.required && txtContact.touched">
+            <div *ngIf="txtContact4.errors?.required && txtContact4.touched">
               <span class="text-danger">Phone no is required</span>
             </div>
-            <div *ngIf="txtContact.errors?.pattern && txtContact.touched">
+            <div *ngIf="txtContact4.errors?.pattern && txtContact4.touched">
               <span class="text-danger">Phone is Invalid</span>
             </div>
             <div id="alertDivRegS">
@@ -304,8 +317,8 @@
       </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success" [disabled]="frm.invalid"
-          (click)="signUp(txtName.value,gender.value,txtEmail.value,txtPassword1.value,txtContact.value);">Sign
+        <button type="button" class="btn btn-success" [disabled]="frm4.invalid"
+          (click)="signUp(txtName4.value,gender.value,txtEmail4.value,txtPassword4.value,txtContact4.value);">Sign
           up</button>
       </div>
     </div>
@@ -368,3 +381,23 @@
     </div>
   </div>
 </div>
+
+<!-- <div class="modal fade" id="alertModal" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Verify your Email &nbsp;
+          <i class="fa fa-check-circle"></i>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <p>Verification link send to your Email</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+<script src="./assets/js/demo1.js"></script>

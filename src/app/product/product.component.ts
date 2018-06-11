@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Product } from '../classes/product';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-product',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductComponent implements OnInit {
 
-  constructor() { }
+  productID: string;
+  productData = '';
+  env = environment.apiURL;
+
+  constructor(private actRoute: ActivatedRoute, private productObj: Product) { }
 
   ngOnInit() {
+    this.actRoute.queryParams.subscribe(params => {
+      this.productID = params['ProdID'];
+    });
+    this.productObj.getSingleProduct(this.productID).subscribe(
+      res => {
+        this.productData = res;
+      }
+    );
   }
 
 }
