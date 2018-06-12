@@ -1,0 +1,14 @@
+.address-box {
+  padding: 2% 0%;
+  margin: 2% 0%;
+  height: 300px;
+  font-size: 12pt;
+}
+
+.address-content {
+  padding: 10%;
+  height: 100% !important;
+  width: 90%;
+  margin-left: 5%;
+  background-color: #f1f5ff;
+}

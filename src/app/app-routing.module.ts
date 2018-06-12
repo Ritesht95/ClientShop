@@ -13,6 +13,7 @@ import { AuthGuard } from './auth.guard';
 import { ShopComponent } from './shop/shop.component';
 import { AddressComponent } from './address/address.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
   { path: '', component: NotfoundComponent },
@@ -22,10 +23,11 @@ const routes: Routes = [
   { path: 'contactUs', component: ContactComponent },
   { path: 'reset', component: ResetpasswordComponent },
   { path: 'home', component: HomeComponent },
-  { path: '*', component: NotfoundComponent },
   { path: 'shop', component: ShopComponent },
   { path: 'address', component: AddressComponent },
-  { path: 'editProfile', component: EditProfileComponent }
+  { path: 'editProfile', component: EditProfileComponent },
+  { path: 'checkout', component: CheckoutComponent },
+  { path: '*', component: NotfoundComponent }
 ];
 
 @NgModule({

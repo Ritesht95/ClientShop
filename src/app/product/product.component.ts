@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../classes/product';
 import { environment } from '../../environments/environment';
+import { SessionService } from '../services/session.service';
 
 @Component({
   selector: 'app-product',
@@ -9,13 +10,16 @@ import { environment } from '../../environments/environment';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-
   productID: string;
   productData = '';
   env = environment.apiURL;
 
-  constructor(private actRoute: ActivatedRoute, private productObj: Product) {
-     this.loadScripts();
+  constructor(
+    private actRoute: ActivatedRoute,
+    private productObj: Product,
+    private sessionservice: SessionService
+  ) {
+    this.loadScripts();
   }
   loadScripts() {
     // tslint:disable-next-line:max-line-length
@@ -30,13 +34,24 @@ export class ProductComponent implements OnInit {
     }
   }
   ngOnInit() {
-
     this.actRoute.queryParams.subscribe(params => {
       this.productID = params['ProdID'];
     });
-    this.productObj.getSingleProduct(this.productID).subscribe(
+    this.productObj.getSingleProduct(this.productID).subscribe(res => {
+      this.productData = res;
+    });
+  }
+
+  addToCart(Quantity: string) {
+    this.productObj.addToCart(
+      this.sessionservice.getUserID(),
+      this.productID,
+      Quantity
+    ).subscribe(
       res => {
-        this.productData = res;
+        if (res['key'] === 'true') {
+          alert('Added to cart.');
+        }
       }
     );
   }

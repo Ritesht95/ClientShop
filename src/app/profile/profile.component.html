@@ -108,31 +108,17 @@
       <div class="profile-intro-imagebox">
         <h2>Your Orders</h2>
         <div class="row">
-          <div class="address-box col-lg-3 col-md-4 col-sm-6 col-xs-12">
+          <div *ngFor="let order of userOrdersData" class="address-box col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="address-content row text-center">
               <div class="form-group text-center">
-                <img height="100" width="100" src="../../assets/images/ab.jpg">
+                <img height="100" width="100" src="{{env}}Assets/ProductImages/{{order.Image}}">
               </div>
               <div class="form-group">
-                <label>Moto G5 Plus</label>
+                <label>{{order.ProductName}}</label>
                 <br>
-                <label>15000/-</label>
+                <label>&#8377; {{order.FinalPrice}}</label>
                 <br>
-                <label>15th May, 2018</label>
-              </div>
-            </div>
-          </div>
-          <div class="address-box col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <div class="address-content row text-center">
-              <div class="form-group text-center">
-                <img height="100" width="100" src="../../assets/images/ab.jpg">
-              </div>
-              <div class="form-group">
-                <label>Moto G5 Plus</label>
-                <br>
-                <label>15000/-</label>
-                <br>
-                <label>15th May, 2018</label>
+                <label>{{order.OrderDate}}</label>
               </div>
             </div>
           </div>
