@@ -32,11 +32,9 @@ export class ProfileComponent implements OnInit {
       .getUserAddresses(this.sessionservice.getUserID())
       .subscribe(res => {
         this.addressData = res['records'];
-        console.log(this.addressData);
         this.addressData.forEach(element => {
           element['Address'] = element['Address'].split(',');
         });
-        console.log(this.addressData);
       });
   }
 

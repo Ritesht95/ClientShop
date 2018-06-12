@@ -221,7 +221,7 @@
 										<img style="width: 275px; height: 250px;" src="{{env}}/assets/ProductImages/{{ p['image'][0]['image'] }}" alt="">
 										<div class="men-cart-pro">
 											<div class="inner-men-cart-pro">
-												<a href="single.html" class="link-product-add-cart">Quick View</a>
+												<a routerLink="/product" [queryParams]="{ProdID: p.ProductID}" class="link-product-add-cart">Quick View</a>
 											</div>
 										</div>
 										<span class="product-new-top">New</span>
