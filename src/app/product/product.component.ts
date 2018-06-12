@@ -15,11 +15,11 @@ export class ProductComponent implements OnInit {
   env = environment.apiURL;
 
   constructor(private actRoute: ActivatedRoute, private productObj: Product) {
-    // this.loadScripts();
+     this.loadScripts();
   }
   loadScripts() {
     // tslint:disable-next-line:max-line-length
-    const dynamicScripts = ['../../assets/js/slideGen.js', '../../assets/js/jquery.flexslider.js', '../../assets/js/responsiveslides.min.js'];
+    const dynamicScripts = ['../../assets/js/slideGen.js'];
     for (let i = 0; i < dynamicScripts.length; i++) {
       const node = document.createElement('script');
       node.src = dynamicScripts[i];
