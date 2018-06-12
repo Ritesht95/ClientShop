@@ -24,13 +24,11 @@ export class ShopComponent implements OnInit {
     this.actRoute.queryParams.subscribe(param => {
       this.id = param['id'];
     });
-    this.servicesservice.getProduct(4).subscribe(res => {
+    this.servicesservice.getProduct(this.id).subscribe(res => {
       if (res['key'] === 'false') {
         this.product = res;
-        console.log(this.product);
       } else {
         this.product = res['records'];
-        console.log(this.product);
       }
     });
   }

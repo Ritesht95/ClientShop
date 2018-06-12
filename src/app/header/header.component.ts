@@ -44,7 +44,6 @@ export class HeaderComponent implements OnInit {
         this.var1 = this.webInfo.Name.split(' ');
         this.var3 = this.var1[0];
         this.var2 = this.var1[1];
-        console.log( this.webInfo);
         // document
         //   .getElementById('profileImageIn')
         //   .setAttribute(
