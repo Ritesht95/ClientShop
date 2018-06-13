@@ -37,11 +37,11 @@ export class ProfileComponent implements OnInit {
           element['Address'] = element['Address'].split(',');
         });
       });
-    // this.objUser.getUserOrders(this.sessionservice.getUserID()).subscribe(
-    //   res => {
-    //     this.userOrdersData = res['records'].slice(0, 3);
-    //   }
-    // );
+    this.objUser.getUserOrders(this.sessionservice.getUserID()).subscribe(
+      res => {
+        this.userOrdersData = res['records'].slice(0, 3);
+      }
+    );
   }
 
   removeUserImage() {
