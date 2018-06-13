@@ -1,0 +1,57 @@
+<app-header></app-header>
+
+<section>
+  <div class="container">
+    <div>
+      <h3><b>Order Detail</b></h3>
+    </div>
+    <h6>Order On: {{ order.DelieveryDate }} | Order Id: {{ order.OrderDetailID }}</h6><br>
+    <div class="row">
+    <div style="border: 1px;" class="well col-md-offset-2 col-md-8">
+
+      <table>
+        <tr>
+          <th>Shipping address</th>
+
+          <th>Payment method</th>
+
+          <th>Order Summa0ry</th>
+        </tr>
+        <tr>
+            <td style="width: 45%;">
+              {{ order.AddressName }}<br>
+              {{ order.Address }}<br>
+              {{ order.Locality }}<br>
+              {{ order.City }}<br>
+              {{ order.State }}<br>
+              {{ order.Country }}<br>
+              {{ order.Pincode }}
+            </td>
+            <td style="width: 30%;">COD</td>
+
+            <td style="width: 35%;">
+              <h6> Price:{{ order.Price }} </h6>
+              <h6> Final Price:{{ order.FinalPrice }} </h6>
+            </td>
+          </tr>
+      </table>
+    </div>
+    <div class="col-md-offset-2 col-md-8" style="border: 1px solid #e3e3e3;border-radius: 4px;">
+        <h4><b> Delivered 25-Jan-2018</b></h4><br>
+        <h6>Package was handed directly to the customer.</h6>
+        <h6>The delivery receipt was signed by Dharmendrabhai R. Patel, GST
+          IN-24AMDPP8371J1ZP.</h6><br>
+        <table>
+          <tr>
+            <td style="width: 20%;"><img src="{{env}}/assets/ProductImages/{{ order.Image }}" style="height: 150px; width: 150px;"></td>
+            <td style="width: 70%;">{{ order.ProductName }}<br>sold by: {{ order.SellerName }}<br>{{ order.FinalPrice }}</td>
+            <td style="width: 10%;"><button class="btn btn-default">Write
+                product review</button></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

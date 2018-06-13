@@ -19,6 +19,8 @@ import { HomeComponent } from './home/home.component';
 import { ShopComponent } from './shop/shop.component';
 import { AddressComponent } from './address/address.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { OrderDetailComponent } from './order-detail/order-detail.component';
+import { OrderComponent } from './order/order.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AlladressesComponent } from './alladresses/alladresses.component';
 
@@ -38,6 +40,8 @@ import { AlladressesComponent } from './alladresses/alladresses.component';
     ShopComponent,
     AddressComponent,
     EditProfileComponent,
+    OrderDetailComponent,
+    OrderComponent,
     CheckoutComponent,
     AlladressesComponent
   ],

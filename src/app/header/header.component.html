@@ -32,7 +32,6 @@
             <li>
               <a routerLink="contact.html">Contact</a>
             </li>
-
             <li *ngIf="loggedIn">
               <a style="cursor: pointer" data-toggle="modal" data-target="#changePassModal" (click)="closeSidebar();">Change Password</a>
             </li>
@@ -276,8 +275,9 @@
       </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success" [disabled]="frm.invalid || flagEmail || flagPhoneNo" (click)="signUp(txtName.value,gender.value,txtEmail.value,txtPassword1.value,txtContact.value);">Sign up</button>
-
+        <button type="button" class="btn btn-success" [disabled]="frm4.invalid || flagEmail || flagPhoneNo"
+          (click)="signUp(txtName4.value,gender.value,txtEmail4.value,txtPassword4.value,txtContact4.value);">Sign
+          up</button>
       </div>
     </div>
   </div>
@@ -344,7 +344,6 @@
           </div>
         </div>
       </div>
-
       <!--Body-->
       <div class="modal-body">
         <div class="row" *ngFor="let item of cartData">
@@ -377,4 +376,3 @@
     </div>
   </div>
 </div>
-<!-- Modal: modalPoll -->
