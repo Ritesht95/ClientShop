@@ -424,5 +424,17 @@ export class User {
     .pipe(map(res => res.json()));
   }
 
+  getUserCart(UserID: string) {
+    return this.http
+    .get(environment.apiURL + 'Cart/DisplayCart.php?id=' + UserID)
+    .pipe(map(res => res.json()));
+  }
+
+  getUserOrders(UserID: string) {
+    return this.http
+    .get(environment.apiURL + 'Order/GetUserOrders.php?id=' + UserID)
+    .pipe(map(res => res.json()));
+  }
   /* Methods */
 }
+
