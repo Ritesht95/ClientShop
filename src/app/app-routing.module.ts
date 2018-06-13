@@ -14,6 +14,7 @@ import { ShopComponent } from './shop/shop.component';
 import { AddressComponent } from './address/address.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { AlladressesComponent } from './alladresses/alladresses.component';
 
 const routes: Routes = [
   { path: '', component: NotfoundComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'shop', component: ShopComponent },
   { path: 'address', component: AddressComponent },
+  { path: 'alladdresses', component: AlladressesComponent },
   { path: 'editProfile', component: EditProfileComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: '*', component: NotfoundComponent }
