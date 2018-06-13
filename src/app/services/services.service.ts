@@ -47,4 +47,9 @@ export class ServicesService {
       .pipe(map(res => res.json()));
   }
 
+  cancelOrder(OrderDetailsID: string) {
+    return this._http
+      .get(environment.apiURL + 'Order/OrderCancelled.php?id=' + OrderDetailsID)
+      .pipe(map(res => res.json()));
+  }
 }
