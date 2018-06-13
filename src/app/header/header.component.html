@@ -23,7 +23,6 @@
             <li *ngIf="loggedIn">
               <a routerLink="/profile">Profile</a>
             </li>
-<<<<<<< HEAD
 
             <li>
               <!-- <a style="cursor: pointer;" data-toggle="modal"
@@ -31,35 +30,30 @@
                 </li>
             <li *ngIf="!loggedIn">
               <a style="cursor: pointer;" data-toggle="modal" data-target="#loginModal" (click)="closeSidebar();">Login</a>
+              </li>
 
-=======
-            <li *ngIf="!loggedIn">
+            <!-- <li *ngIf="!loggedIn">
               <a style="cursor: pointer;" data-toggle="modal" data-target="#loginModal" (click)="closeSidebar();">Login</a>
->>>>>>> 503ede4389e9630781e92dae21249bb08af1e14f
-            </li>
+
+            </li> -->
             <li>
               <a routerLink="/cat">Categories</a>
             </li>
             <li>
               <a routerLink="contact.html">Contact</a>
             </li>
-<<<<<<< HEAD
+
 
             <li>
               <a style="cursor: pointer" data-toggle="modal"
                 data-target="#changePassModal">Change Password</a>
 
-=======
->>>>>>> 503ede4389e9630781e92dae21249bb08af1e14f
             <li *ngIf="loggedIn">
               <a style="cursor: pointer" data-toggle="modal" data-target="#changePassModal" (click)="closeSidebar();">Change Password</a>
             </li>
             <li *ngIf="loggedIn">
               <a style="cursor: pointer" (click)="logout();">Logout</a>
-<<<<<<< HEAD
 
-=======
->>>>>>> 503ede4389e9630781e92dae21249bb08af1e14f
             </li>
           </ul>
         </nav>
@@ -338,13 +332,13 @@
       </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-<<<<<<< HEAD
+
         <button type="button" class="btn btn-success" [disabled]="frm4.invalid"
           (click)="signUp(txtName4.value,gender.value,txtEmail4.value,txtPassword4.value,txtContact4.value);">Sign
           up</button>
-=======
+
         <button type="button" class="btn btn-success" [disabled]="frm.invalid || flagEmail || flagPhoneNo" (click)="signUp(txtName.value,gender.value,txtEmail.value,txtPassword1.value,txtContact.value);">Sign up</button>
->>>>>>> 503ede4389e9630781e92dae21249bb08af1e14f
+
       </div>
     </div>
   </div>
@@ -406,10 +400,7 @@
     </div>
   </div>
 </div>
-<<<<<<< HEAD
 
-=======
->>>>>>> 503ede4389e9630781e92dae21249bb08af1e14f
 <!-- <div class="modal fade" id="alertModal" role="dialog">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
@@ -429,7 +420,4 @@
   </div>
 </div> -->
 <script src="./assets/js/demo1.js"></script>
-<<<<<<< HEAD
-=======
 
->>>>>>> 503ede4389e9630781e92dae21249bb08af1e14f

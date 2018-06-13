@@ -13,6 +13,8 @@ import { AuthGuard } from './auth.guard';
 import { ShopComponent } from './shop/shop.component';
 import { AddressComponent } from './address/address.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { OrderDetailComponent } from './order-detail/order-detail.component';
+import { OrderComponent } from './order/order.component';
 
 const routes: Routes = [
   { path: '', component: NotfoundComponent },
@@ -25,11 +27,14 @@ const routes: Routes = [
   { path: '*', component: NotfoundComponent },
   { path: 'shop', component: ShopComponent },
   { path: 'address', component: AddressComponent },
-  { path: 'editProfile', component: EditProfileComponent }
+  { path: 'editProfile', component: EditProfileComponent },
+  { path: 'orderDetail', component: OrderDetailComponent},
+  { path: 'order', component: OrderComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+
 })
 export class AppRoutingModule {}
