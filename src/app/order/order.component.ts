@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServicesService } from '../services/services.service';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { SessionService } from '../services/session.service';
 
 @Component({
   selector: 'app-order',
@@ -13,11 +14,11 @@ export class OrderComponent implements OnInit {
   order: any = '';
   env = environment.apiURL;
 
-  constructor( private router: Router, private services: ServicesService) { }
+  constructor( private router: Router, private services: ServicesService, private sessionservice: SessionService) { }
 
   ngOnInit() {
     this.env = environment.apiURL;
-    this.services.getAllOrder(1).subscribe(res => {
+    this.services.getAllOrder(this.sessionservice.getUserID()).subscribe(res => {
       if (res['key'] === 'false') {
         this.order = res;
         console.log(this.order);
