@@ -80,4 +80,12 @@ export class Product {
       .pipe(map(res => res.json()));
   }
 
+  getTrackingDetails(OrderDetailsID: string) {
+    return this.http
+      .get(
+        environment.apiURL + 'Tracking/ViewTracking.php?id=' + OrderDetailsID
+      )
+      .pipe(map(res => res.json()));
+  }
+
 }
