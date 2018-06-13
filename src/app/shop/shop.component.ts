@@ -44,12 +44,17 @@ export class ShopComponent implements OnInit {
   }
 
   addToCart(ProductID: string) {
-    this.productObj
+    if (this.sessionservice.getUserLoggedIn()) {
+      this.productObj
       .addToCart(this.sessionservice.getUserID(), ProductID, '1')
       .subscribe(res => {
         if (res['key'] === 'true') {
           alert('Added to cart.');
         }
       });
+    } else {
+      document.getElementById('btnLoginModalOpen').click();
+    }
+
   }
 }

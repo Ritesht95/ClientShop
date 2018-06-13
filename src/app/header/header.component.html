@@ -25,6 +25,7 @@
             </li>
             <li *ngIf="!loggedIn">
               <a style="cursor: pointer;" data-toggle="modal" data-target="#loginModal" (click)="closeSidebar();">Login</a>
+              <a id="btnLoginModalOpen" data-toggle="modal" data-target="#loginModal" style="display: none;"></a>
             </li>
             <li>
               <a routerLink="/cat">Categories</a>

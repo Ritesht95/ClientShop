@@ -29,10 +29,10 @@ const routes: Routes = [
   { path: 'shop', component: ShopComponent },
   { path: 'address', component: AddressComponent },
   { path: 'editProfile', component: EditProfileComponent },
-  { path: 'orderDetail', component: OrderDetailComponent},
-  { path: 'order', component: OrderComponent },
-  { path: 'alladdresses', component: AlladressesComponent },
-  { path: 'checkout', component: CheckoutComponent },
+  { path: 'orderDetail', canActivate: [AuthGuard], component: OrderDetailComponent},
+  { path: 'order', canActivate: [AuthGuard], component: OrderComponent },
+  { path: 'alladdresses', canActivate: [AuthGuard], component: AlladressesComponent },
+  { path: 'checkout', canActivate: [AuthGuard], component: CheckoutComponent },
   { path: '*', component: NotfoundComponent }
 ];
 

@@ -43,6 +43,7 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart(Quantity: string) {
+    if (this.sessionservice.getUserLoggedIn()) {
     this.productObj.addToCart(
       this.sessionservice.getUserID(),
       this.productID,
@@ -54,6 +55,8 @@ export class ProductComponent implements OnInit {
         }
       }
     );
+  } else {
+    document.getElementById('btnLoginModalOpen').click();
   }
 
 }
