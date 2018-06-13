@@ -36,8 +36,10 @@
       <div class="color-quality">
         <div class="color-quality-right">
           <h5>Quality :</h5>
+          <form action="#" method="post">
           <input type="number" min="1" style="width:200px !important;" max="{{productData.CurrentStock}}" class="form-control" name="txtQTY"
             id="txtQTY" #txtQTY="ngModel" ngModel>
+          </form>
         </div>
       </div>
       <div class="clearfix">
@@ -76,18 +78,8 @@
       </div>
       <div class="occasion-cart">
         <div class="shoe single-item single_page_b">
-          <form action="#" method="post">
-            <input type="hidden" name="cmd" value="_cart">
-            <input type="hidden" name="add" value="1">
-            <input type="hidden" name="shoe_item" value="Chikku Loafers">
-            <input type="hidden" name="amount" value="405.00">
-            <input type="submit" name="submit" value="Add to cart" class="button add">
-
-            <a href="#" data-toggle="modal" data-target="#myModal1"></a>
-          </form>
-
+            <input type="submit" name="submit" value="Add to cart" class="button add" (click)="addToCart(txtQTY.value);">
         </div>
-
       </div>
       <!-- <ul class="social-nav model-3d-0 footer-social social single_page">
         <li class="share">Share On : </li>

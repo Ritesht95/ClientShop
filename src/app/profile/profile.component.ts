@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit {
   env = environment.apiURL;
   fileToUpload: File = null;
   formData: FormData = new FormData();
+  userOrdersData = [];
 
   constructor(
     private objUser: User,
@@ -31,21 +32,24 @@ export class ProfileComponent implements OnInit {
     this.objUser
       .getUserAddresses(this.sessionservice.getUserID())
       .subscribe(res => {
-        this.addressData = res['records'];
-        console.log(this.addressData);
+        this.addressData = res['records'].slice(0, 3);
         this.addressData.forEach(element => {
           element['Address'] = element['Address'].split(',');
         });
-        console.log(this.addressData);
       });
+    this.objUser.getUserOrders(this.sessionservice.getUserID()).subscribe(
+      res => {
+        this.userOrdersData = res['records'].slice(0, 3);
+      }
+    );
   }
 
   removeUserImage() {
-    this.objUser.removeUserImage(this.sessionservice.getUserID()).subscribe(
-      res => {
+    this.objUser
+      .removeUserImage(this.sessionservice.getUserID())
+      .subscribe(res => {
         this.ngOnInit();
-      }
-    );
+      });
   }
 
   imagePreview(event: any) {
@@ -63,17 +67,14 @@ export class ProfileComponent implements OnInit {
       console.log('start');
       this.formData.append('image', files[0], files[0].name);
       this.formData.append('Id', this.sessionservice.getUserID());
-      this.objUser.setUserImage(this.formData).subscribe(
-        res => {
-          if (res['key'] === 'true') {
-            alert('Profile Image changed successfully.');
-          }
+      this.objUser.setUserImage(this.formData).subscribe(res => {
+        if (res['key'] === 'true') {
+          alert('Profile Image changed successfully.');
         }
-      )
+      });
       console.log('end');
     }
     reader.readAsDataURL(files[0]);
-
   }
 
   validateFile(name) {

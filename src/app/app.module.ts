@@ -21,6 +21,8 @@ import { AddressComponent } from './address/address.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { OrderComponent } from './order/order.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { AlladressesComponent } from './alladresses/alladresses.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { OrderComponent } from './order/order.component';
     EditProfileComponent,
     OrderDetailComponent,
     OrderComponent,
+    CheckoutComponent,
+    AlladressesComponent
   ],
   imports: [
     BrowserModule,

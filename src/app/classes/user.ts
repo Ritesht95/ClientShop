@@ -20,168 +20,31 @@ export class User {
 
   constructor(private http: Http) {}
 
-  /* Getter and Setters */
-  /**
-   * Getter $UserID
-   * @return {string}
-   */
-  public get $UserID(): string {
-    return this.UserID;
-  }
+  timeDifference(current, previous) {
+    const msPerMinute = 60 * 1000;
+    const msPerHour = msPerMinute * 60;
+    const msPerDay = msPerHour * 24;
+    const msPerMonth = msPerDay * 30;
+    const msPerYear = msPerDay * 365;
 
-  /**
-   * Getter $Name
-   * @return {string}
-   */
-  public get $Name(): string {
-    return this.Name;
-  }
+    const elapsed = current - previous;
 
-  /**
-   * Getter $Gender
-   * @return {string}
-   */
-  public get $Gender(): string {
-    return this.Gender;
+    if (elapsed < msPerMinute) {
+      return Math.round(elapsed / 1000) + ' seconds ago';
+    } else if (elapsed < msPerHour) {
+      return Math.round(elapsed / msPerMinute) + ' minutes ago';
+    } else if (elapsed < msPerDay) {
+      return Math.round(elapsed / msPerHour) + ' hours ago';
+    } else if (elapsed < msPerMonth) {
+      return 'approximately ' + Math.round(elapsed / msPerDay) + ' days ago';
+    } else if (elapsed < msPerYear) {
+      return (
+        'approximately ' + Math.round(elapsed / msPerMonth) + ' months ago'
+      );
+    } else {
+      return 'approximately ' + Math.round(elapsed / msPerYear) + ' years ago';
+    }
   }
-
-  /**
-   * Getter $Email
-   * @return {string}
-   */
-  public get $Email(): string {
-    return this.Email;
-  }
-
-  /**
-   * Getter $PhoneNo
-   * @return {string}
-   */
-  public get $PhoneNo(): string {
-    return this.PhoneNo;
-  }
-
-  /**
-   * Getter $Password
-   * @return {string}
-   */
-  public get $Password(): string {
-    return this.Password;
-  }
-
-  /**
-   * Getter $ProfileImage
-   * @return {string}
-   */
-  public get $ProfileImage(): string {
-    return this.ProfileImage;
-  }
-
-  /**
-   * Getter $CreatedOn
-   * @return {string}
-   */
-  public get $CreatedOn(): string {
-    return this.CreatedOn;
-  }
-
-  /**
-   * Getter $IsActive
-   * @return {boolean}
-   */
-  public get $IsActive(): boolean {
-    return this.IsActive;
-  }
-
-  /**
-   * Getter $VerificationCode
-   * @return {string}
-   */
-  public get $VerificationCode(): string {
-    return this.VerificationCode;
-  }
-
-  /**
-   * Setter $UserID
-   * @param {string} value
-   */
-  public set $UserID(value: string) {
-    this.UserID = value;
-  }
-
-  /**
-   * Setter $Name
-   * @param {string} value
-   */
-  public set $Name(value: string) {
-    this.Name = value;
-  }
-
-  /**
-   * Setter $Gender
-   * @param {string} value
-   */
-  public set $Gender(value: string) {
-    this.Gender = value;
-  }
-
-  /**
-   * Setter $Email
-   * @param {string} value
-   */
-  public set $Email(value: string) {
-    this.Email = value;
-  }
-
-  /**
-   * Setter $PhoneNo
-   * @param {string} value
-   */
-  public set $PhoneNo(value: string) {
-    this.PhoneNo = value;
-  }
-
-  /**
-   * Setter $Password
-   * @param {string} value
-   */
-  public set $Password(value: string) {
-    this.Password = value;
-  }
-
-  /**
-   * Setter $ProfileImage
-   * @param {string} value
-   */
-  public set $ProfileImage(value: string) {
-    this.ProfileImage = value;
-  }
-
-  /**
-   * Setter $CreatedOn
-   * @param {string} value
-   */
-  public set $CreatedOn(value: string) {
-    this.CreatedOn = value;
-  }
-
-  /**
-   * Setter $IsActive
-   * @param {boolean} value
-   */
-  public set $IsActive(value: boolean) {
-    this.IsActive = value;
-  }
-
-  /**
-   * Setter $VerificationCode
-   * @param {string} value
-   */
-  public set $VerificationCode(value: string) {
-    this.VerificationCode = value;
-  }
-
-  /* Getter and Setters */
 
   /* Methods */
   CheckLogin(Username: string, Password: string): any {
@@ -247,7 +110,7 @@ export class User {
     return (
       this.http
         .post(environment.apiURL + 'User/CheckRandomString.php', data, options)
-        // tslint:disable-next-line:no-shadowed-variable
+        // tslint:disable-next-line:no-shadowed-constiable
         .pipe(map(res => res.json()))
     );
   }
@@ -270,7 +133,7 @@ export class User {
     return (
       this.http
         .post(environment.apiURL + 'User/ResetPassword.php', data, options)
-        // tslint:disable-next-line:no-shadowed-variable
+        // tslint:disable-next-line:no-shadowed-constiable
         .pipe(map(res => res.json()))
     );
   }
@@ -293,7 +156,7 @@ export class User {
     return (
       this.http
         .post(environment.apiURL + 'User/ChangePassword.php', data, options)
-        // tslint:disable-next-line:no-shadowed-variable
+        // tslint:disable-next-line:no-shadowed-constiable
         .pipe(map(res => res.json()))
     );
   }
@@ -420,9 +283,20 @@ export class User {
 
   removeUserImage(UserID: string) {
     return this.http
-    .get(environment.apiURL + 'User/RemoveImage.php?id=' + UserID)
-    .pipe(map(res => res.json()));
+      .get(environment.apiURL + 'User/RemoveImage.php?id=' + UserID)
+      .pipe(map(res => res.json()));
   }
 
+  getUserCart(UserID: string) {
+    return this.http
+      .get(environment.apiURL + 'Cart/DisplayCart.php?id=' + UserID)
+      .pipe(map(res => res.json()));
+  }
+
+  getUserOrders(UserID: string) {
+    return this.http
+      .get(environment.apiURL + 'Order/GetUserOrders.php?id=' + UserID)
+      .pipe(map(res => res.json()));
+  }
   /* Methods */
 }

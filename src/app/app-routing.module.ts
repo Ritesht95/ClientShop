@@ -15,6 +15,8 @@ import { AddressComponent } from './address/address.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { OrderComponent } from './order/order.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { AlladressesComponent } from './alladresses/alladresses.component';
 
 const routes: Routes = [
   { path: '', component: NotfoundComponent },
@@ -24,12 +26,14 @@ const routes: Routes = [
   { path: 'contactUs', component: ContactComponent },
   { path: 'reset', component: ResetpasswordComponent },
   { path: 'home', component: HomeComponent },
-  { path: '*', component: NotfoundComponent },
   { path: 'shop', component: ShopComponent },
   { path: 'address', component: AddressComponent },
   { path: 'editProfile', component: EditProfileComponent },
   { path: 'orderDetail', component: OrderDetailComponent},
-  { path: 'order', component: OrderComponent }
+  { path: 'order', component: OrderComponent },
+  { path: 'alladdresses', component: AlladressesComponent },
+  { path: 'checkout', component: CheckoutComponent },
+  { path: '*', component: NotfoundComponent }
 ];
 
 @NgModule({

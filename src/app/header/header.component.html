@@ -23,37 +23,20 @@
             <li *ngIf="loggedIn">
               <a routerLink="/profile">Profile</a>
             </li>
-
-            <li>
-              <!-- <a style="cursor: pointer;" data-toggle="modal"
-                data-target="#loginModal" (click)="closeSidebar();">Login</a> -->
-                </li>
             <li *ngIf="!loggedIn">
               <a style="cursor: pointer;" data-toggle="modal" data-target="#loginModal" (click)="closeSidebar();">Login</a>
-              </li>
-
-            <!-- <li *ngIf="!loggedIn">
-              <a style="cursor: pointer;" data-toggle="modal" data-target="#loginModal" (click)="closeSidebar();">Login</a>
-
-            </li> -->
+            </li>
             <li>
               <a routerLink="/cat">Categories</a>
             </li>
             <li>
               <a routerLink="contact.html">Contact</a>
             </li>
-
-
-            <li>
-              <a style="cursor: pointer" data-toggle="modal"
-                data-target="#changePassModal">Change Password</a>
-
             <li *ngIf="loggedIn">
               <a style="cursor: pointer" data-toggle="modal" data-target="#changePassModal" (click)="closeSidebar();">Change Password</a>
             </li>
             <li *ngIf="loggedIn">
               <a style="cursor: pointer" (click)="logout();">Logout</a>
-
             </li>
           </ul>
         </nav>
@@ -67,9 +50,7 @@
       <div class="top_nav_right">
         <div class="shoecart shoecart2 cart cart box_1">
           <form action="#" method="post" class="last">
-            <input type="hidden" name="cmd" value="_cart">
-            <input type="hidden" name="display" value="1">
-            <button class="top_shoe_cart" type="submit" name="submit" value="">
+            <button class="top_shoe_cart" data-toggle="modal" data-target="#modalPoll" (click)="cartRefresh();">
               <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
             </button>
           </form>
@@ -114,13 +95,11 @@
   <!-- //banner_inner -->
 </div>
 <!-- Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
-  aria-labelledby="loginModal" aria-hidden="true">
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button id="btnCloseLogin" type="button" class="close"
-          data-dismiss="modal" aria-label="Close">
+        <button id="btnCloseLogin" type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         <h4 class="modal-title" id="exampleModalLongTitle">Login</h4>
@@ -139,26 +118,18 @@
               <div style="opacity: 1;">
                 <div class="form-group">
                   <label class="control-label">Username</label>
-                  <input type="text" class="form-control" ngModel
-                    #txtUsername="ngModel" name="txtUsername" id="txtUsername"
-                    required>
+                  <input type="text" class="form-control" ngModel #txtUsername="ngModel" name="txtUsername" id="txtUsername" required>
                 </div>
                 <div class="form-group">
                   <label class="control-label">Password</label>
-                  <input type="password" class="form-control" ngModel
-                    #txtPassword="ngModel" name="txtPassword" id="txtPassword"
-                    required>
+                  <input type="password" class="form-control" ngModel #txtPassword="ngModel" name="txtPassword" id="txtPassword" required>
                 </div>
                 <div class="form-group">
                   <a>
-                    <label style="cursor: pointer;" data-toggle="modal"
-                      data-target="#forgotPasswordModal" class="control-label"
-                      (click)="closeLoginModal();">Forgot Password?</label>
+                    <label style="cursor: pointer;" data-toggle="modal" data-target="#forgotPasswordModal" class="control-label" (click)="closeLoginModal();">Forgot Password?</label>
                   </a> |
                   <a>
-                    <label style="cursor: pointer;" data-toggle="modal"
-                      data-target="#registerModal" class="control-label"
-                      (click)="closeLoginModal();">Register now</label>
+                    <label style="cursor: pointer;" data-toggle="modal" data-target="#registerModal" class="control-label" (click)="closeLoginModal();">Register now</label>
                   </a>
                 </div>
               </div>
@@ -187,20 +158,17 @@
       </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success" [disabled]="frm1.invalid"
-          (click)="checkLogin(txtUsername.value,txtPassword.value);">Login</button>
+        <button type="button" class="btn btn-success" [disabled]="frm1.invalid" (click)="checkLogin(txtUsername.value,txtPassword.value);">Login</button>
       </div>
     </div>
   </div>
 </div>
 
-<div class="modal fade" id="forgotPasswordModal" tabindex="-1" role="dialog"
-  aria-labelledby="forgotPasswordModal" aria-hidden="true">
+<div class="modal fade" id="forgotPasswordModal" tabindex="-1" role="dialog" aria-labelledby="forgotPasswordModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"
-          aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         <h4 class="modal-title" id="exampleModalLongTitle">Forgot Password</h4>
@@ -209,8 +177,7 @@
         <div class="modal-body">
           <div class="form-group">
             <label class="control-label">Username</label>
-            <input type="text" class="form-control" required ngModel
-              #txtUsername1="ngModel" name="txtUsername1" id="txtUsername1">
+            <input type="text" class="form-control" required ngModel #txtUsername1="ngModel" name="txtUsername1" id="txtUsername1">
           </div>
           <div *ngIf="txtUsername1.touched">
             <div *ngIf="txtUsername1.errors?.required && txtUsername1.touched">
@@ -230,20 +197,17 @@
       </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success" [disabled]="frm3.invalid"
-          (click)="forgotPassword(txtUsername1.value);">Send reset link</button>
+        <button type="button" class="btn btn-success" [disabled]="frm3.invalid" (click)="forgotPassword(txtUsername1.value);">Send reset link</button>
       </div>
     </div>
   </div>
 </div>
 
-<div class="modal fade" id="registerModal" tabindex="-1" role="dialog"
-  aria-labelledby="registerModal" aria-hidden="true">
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"
-          aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         <h4 class="modal-title" id="exampleModalLongTitle">Sign up</h4>
@@ -252,48 +216,27 @@
         <div class="modal-body">
           <div class="form-group">
             <label class="control-label">Name</label>
-            <input type="text" class="form-control" ngModel #txtName4="ngModel"
-              name="txtName4" id="txtName4" required pattern="[a-zA-Z ]+">
+            <input type="text" class="form-control" ngModel #txtName4="ngModel" name="txtName4" id="txtName4" required pattern="[a-zA-Z ]+">
           </div>
           <div class="form-group">
             <label class="control-label">Email</label>
-<<<<<<< HEAD
-            <input type="text" class="form-control" id="txtEmail4" ngModel
-              name="txtEmail4" required
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-              #txtEmail4="ngModel">
-=======
-            <input type="text" class="form-control" id="txtEmail" ngModel name="txtEmail" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-              #txtEmail="ngModel" (blur)="checkEmail(txtEmail.value);" >
->>>>>>> 503ede4389e9630781e92dae21249bb08af1e14f
+            <input type="text" class="form-control" id="txtEmail4" ngModel name="txtEmail4" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+              #txtEmail4="ngModel" (blur)="checkEmail(txtEmail4.value);">
           </div>
           <div class="form-group">
             <label class="control-label">Password</label>
-            <input type="password" class="form-control" ngModel
-              id="txtPassword4" name="txtPassword4" #txtPassword4="ngModel"
-              required>
+            <input type="password" class="form-control" ngModel id="txtPassword4" name="txtPassword4" #txtPassword4="ngModel" required>
           </div>
           <div class="form-group">
             <label class="control-label">Gender</label>
             <br>
-            <input type="radio" value="male" name="gender" ngModel required
-              #gender="ngModel"> Male
-            <input type="radio" value="female" name="gender" ngModel required
-              #gender="ngModel"> Female
-            <input type="radio" value="transgender" name="gender" ngModel
-              required #gender="ngModel"> Transgender
+            <input type="radio" value="male" name="gender" ngModel required #gender="ngModel"> Male
+            <input type="radio" value="female" name="gender" ngModel required #gender="ngModel"> Female
+            <input type="radio" value="transgender" name="gender" ngModel required #gender="ngModel"> Transgender
           </div>
           <div class="form-group">
-            <label class="control-label">Phone Number</label>
-<<<<<<< HEAD
-            <input type="text" class="form-control" id="txtContact4"
-              name="txtContact4" #txtContact4="ngModel" placeholder="Contact
-              Number"
-              required pattern="[0-9]{10}" ngModel>
-=======
-            <input type="text" class="form-control" id="txtContact" name="txtContact" #txtContact="ngModel" placeholder="Contact Number"
-              required pattern="[0-9]{10}" ngModel (blur)="checkPhoneNo(txtContact.value);">
->>>>>>> 503ede4389e9630781e92dae21249bb08af1e14f
+            <input type="text" class="form-control" id="txtContact44" name="txtContact" #txtContact4="ngModel" placeholder="Contact Number"
+              required pattern="[0-9]{10}" ngModel (blur)="checkPhoneNo(txtContact4.value);">
           </div>
           <div *ngIf="txtName4.touched || txtContact4.touched || txtEmail4.touched
             || txtPassword4.touched || gender.touched">
@@ -332,25 +275,19 @@
       </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-        <button type="button" class="btn btn-success" [disabled]="frm4.invalid"
+        <button type="button" class="btn btn-success" [disabled]="frm4.invalid || flagEmail || flagPhoneNo"
           (click)="signUp(txtName4.value,gender.value,txtEmail4.value,txtPassword4.value,txtContact4.value);">Sign
           up</button>
-
-        <button type="button" class="btn btn-success" [disabled]="frm.invalid || flagEmail || flagPhoneNo" (click)="signUp(txtName.value,gender.value,txtEmail.value,txtPassword1.value,txtContact.value);">Sign up</button>
-
       </div>
     </div>
   </div>
 </div>
 
-<div class="modal fade" id="changePassModal" tabindex="-1" role="dialog"
-  aria-labelledby="changePassModal" aria-hidden="true">
+<div class="modal fade" id="changePassModal" tabindex="-1" role="dialog" aria-labelledby="changePassModal" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" id='btnCPClose1' class="close"
-          data-dismiss="modal" aria-label="Close">
+        <button type="button" id='btnCPClose1' class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
@@ -359,23 +296,17 @@
         <form #frm="ngForm">
           <div class="form-group">
             <label for="txtOldPassword" class="control-label">Old Password</label>
-            <input type="password" ngModel #txtOldPassword="ngModel"
-              name="txtOldPassword" class="form-control" id="txtOldPassword"
-              placeholder="Password"
+            <input type="password" ngModel #txtOldPassword="ngModel" name="txtOldPassword" class="form-control" id="txtOldPassword" placeholder="Password"
               pattern="[a-zA-Z0-9]*" required>
           </div>
           <div class="form-group">
             <label for="txtNewPassword" class="control-label">New Password</label>
-            <input type="password" ngModel #txtNewPassword="ngModel"
-              name="txtNewPassword" class="form-control" id="txtNewPassword"
-              placeholder="Password"
+            <input type="password" ngModel #txtNewPassword="ngModel" name="txtNewPassword" class="form-control" id="txtNewPassword" placeholder="Password"
               pattern="[a-zA-Z0-9]*" required>
           </div>
           <div class="form-group">
             <label for="txtCPassword" class="control-label">Confirm Password</label>
-            <input type="password" ngModel #txtCPassword="ngModel"
-              name="txtCPassword" class="form-control" id="txtCPassword"
-              placeholder="Password"
+            <input type="password" ngModel #txtCPassword="ngModel" name="txtCPassword" class="form-control" id="txtCPassword" placeholder="Password"
               pattern="[a-zA-Z0-9]*" required>
           </div>
         </form>
@@ -391,33 +322,57 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button id='btnCPClose' type="button" class="btn btn-secondary"
-          data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary"
-          (click)="changePassword(txtCPassword.value, txtOldPassword.value);">Save
-          changes</button>
+        <button id='btnCPClose' type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="changePassword(txtCPassword.value, txtOldPassword.value);">Save changes
+        </button>
       </div>
     </div>
   </div>
 </div>
-
-<!-- <div class="modal fade" id="alertModal" role="dialog">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Verify your Email &nbsp;
-          <i class="fa fa-check-circle"></i>
-        </h4>
+<!-- Modal: modalPoll -->
+<div style="z-index: 11000;" class="modal fade right" id="modalPoll" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+    <div class="modal-content" style="width: 75% !important; display: block;">
+      <!--Header-->
+      <div class="modal-header" style="background-color: #000; width:100%;">
+        <div class="row">
+          <div class="col-lg-12">
+            <h3 style="font-weight: 600; color: white; width:100% !important;">Cart
+              <button style="float: right; color:white;" class="close" data-dismiss="modal" aria-label="Close">x</button>
+            </h3>
+          </div>
+        </div>
       </div>
+      <!--Body-->
       <div class="modal-body">
-        <p>Verification link send to your Email</p>
+        <div class="row" *ngFor="let item of cartData">
+            <div class="col-lg-9">
+              <h4>{{item.ProductName}}
+                <br>
+                <small>Qty: {{item.Qty}}</small>
+                <a style="display: block; float: right; right: 5px;" (click)="removeFromCart(item.CartID);"><span class="fa fa-trash"></span></a>
+              </h4>
+            </div>
+            <br>
+            <div class="col-lg-3">
+              <h4>&#8377; {{item.Price}}</h4>
+            </div>
+          <hr class="hr-dark">
+        </div>
+
+        <div *ngIf="cartData === undefined" class="row">
+          <div class="col-lg-12">
+            <h4>Cart is empty</h4>
+          </div>
+        </div>
       </div>
+
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button routerLink="/checkout" [disabled]="cartData === undefined" style="background-color: #000 !important;" class="btn btn-info">Checkout
+          <span style="color: white !important; font-size: 14pt;" class="fa fa-paper-plane"></span>
+        </button>
       </div>
     </div>
   </div>
-</div> -->
-<script src="./assets/js/demo1.js"></script>
-
+</div>
