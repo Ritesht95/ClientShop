@@ -5,6 +5,7 @@ import { SessionService } from '../services/session.service';
 import { ServicesService } from '../services/services.service';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { Product } from '../classes/product';
 
 @Component({
   selector: 'app-header',
@@ -21,12 +22,14 @@ export class HeaderComponent implements OnInit {
   var3: any = '';
   flagEmail = false;
   flagPhoneNo = false;
+  cartData = '';
 
   constructor(
     private userObj: User,
     private sessionservice: SessionService,
     private router: Router,
-    private services: ServicesService
+    private services: ServicesService,
+    private productObj: Product
   ) {
     this.loadScripts();
   }
@@ -38,24 +41,18 @@ export class HeaderComponent implements OnInit {
       if (res['key'] === 'false') {
         this.webInfo = res;
 
-        console.log( this.webInfo);
+        console.log(this.webInfo);
       } else {
         this.webInfo = res;
         this.var1 = this.webInfo.Name.split(' ');
         this.var3 = this.var1[0];
         this.var2 = this.var1[1];
-        // document
-        //   .getElementById('profileImageIn')
-        //   .setAttribute(
-        //     'src',
-        //     environment.apiURL + 'Assets/WebsiteLogo/' + this.webInfo.Logo
-        //   );
-        // document
-        //   .getElementById('profileImageIn')
-        //   .setAttribute('alt', this.webInfo.LogoAlt);
       }
     });
 
+    this.userObj.getUserCart(this.sessionservice.getUserID()).subscribe(res => {
+      this.cartData = res['records'];
+    });
   }
 
   loadScripts() {
@@ -196,34 +193,39 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-
   checkEmail(Email: string) {
-    this.userObj.checkEmail(Email).subscribe(
-      res => {
-        if (res['key'] === 'false') {
-          this.errorMessage = 'Email is already registered.';
-          this.ShowAlert(true, 'alertDivReg');
-          this.timeout(false, 'alertDivReg');
-          this.flagEmail = true;
-        } else {
-
-        }
+    this.userObj.checkEmail(Email).subscribe(res => {
+      if (res['key'] === 'false') {
+        this.errorMessage = 'Email is already registered.';
+        this.ShowAlert(true, 'alertDivReg');
+        this.timeout(false, 'alertDivReg');
+        this.flagEmail = true;
+      } else {
       }
-    );
+    });
   }
 
   checkPhoneNo(PhoneNo: string) {
-    this.userObj.checkPhoneNo(PhoneNo).subscribe(
-      res => {
-        if (res['key'] === 'false') {
-          this.errorMessage = 'Phone number is already registered.';
-          this.ShowAlert(true, 'alertDivReg');
-          this.timeout(false, 'alertDivReg');
-          this.flagEmail = true;
-        } else {
-
-        }
+    this.userObj.checkPhoneNo(PhoneNo).subscribe(res => {
+      if (res['key'] === 'false') {
+        this.errorMessage = 'Phone number is already registered.';
+        this.ShowAlert(true, 'alertDivReg');
+        this.timeout(false, 'alertDivReg');
+        this.flagEmail = true;
+      } else {
       }
-    );
+    });
+  }
+
+  cartRefresh() {
+    this.userObj.getUserCart(this.sessionservice.getUserID()).subscribe(res => {
+      this.cartData = res['records'];
+    });
+  }
+
+  removeFromCart(CartID: string) {
+    this.productObj.removeFromCart(CartID).subscribe(res => {
+      this.ngOnInit();
+    });
   }
 }

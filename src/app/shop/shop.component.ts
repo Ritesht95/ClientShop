@@ -2,9 +2,12 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ServicesService } from '../services/services.service';
 import { environment } from '../../environments/environment';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../classes/product';
 import { SessionService } from '../services/session.service';
+import { HeaderComponent } from '../header/header.component';
+import { User } from '../classes/user';
+import { Route } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-shop',
@@ -21,7 +24,9 @@ export class ShopComponent implements OnInit {
     private servicesservice: ServicesService,
     private actRoute: ActivatedRoute,
     private productObj: Product,
-    private sessionservice: SessionService
+    private sessionservice: SessionService,
+    private userObj: User,
+    private router: Router
   ) {}
 
   ngOnInit() {
