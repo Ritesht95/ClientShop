@@ -4,7 +4,7 @@
     <div class="header_agileits">
       <div class="logo inner_page_log">
         <h1>
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" routerLink="/">
             <span>{{ var3 }}</span>
             <i>{{ var2 }}</i>
           </a>
@@ -65,16 +65,16 @@
     <div class="cd-main-header">
       <ul class="cd-header-buttons">
         <li>
-          <a class="cd-search-trigger" href="#cd-search">
+          <a id = "cd-search-trigger" class="cd-search-trigger" (click)="SearchTrigger($event)">
             <span></span>
           </a>
         </li>
       </ul>
     </div>
     <div id="cd-search" class="cd-search">
-      <form action="#" method="post">
-        <input name="Search" type="search" placeholder="Click enter after
-          typing...">
+      <form #searchForm="ngForm" (submit)="search();">
+        <input type="search" id="txtSearch" name="txtSearch" placeholder="Enter Product Name here...(Press Enter to search)">
+        <!-- <button routerLink="/productsearch" [queryParams]="{srchTerm: txtSearch.value}" class="btn btn-danger">Search</button> -->
       </form>
     </div>
   </div>
@@ -86,7 +86,7 @@
 
       <ul class="short">
         <li>
-          <a href="index.html">Home</a>
+          <a href="/">Home</a>
           <i>|</i>
         </li>
         <li>Shop</li>
@@ -231,9 +231,9 @@
           <div class="form-group">
             <label class="control-label">Gender</label>
             <br>
-            <input type="radio" value="male" name="gender" ngModel required #gender="ngModel"> Male
-            <input type="radio" value="female" name="gender" ngModel required #gender="ngModel"> Female
-            <input type="radio" value="transgender" name="gender" ngModel required #gender="ngModel"> Transgender
+            <input type="radio" value="M" name="gender" ngModel required #gender="ngModel"> Male
+            <input type="radio" value="F" name="gender" ngModel required #gender="ngModel"> Female
+            <input type="radio" value="T" name="gender" ngModel required #gender="ngModel"> Transgender
           </div>
           <div class="form-group">
             <input type="text" class="form-control" id="txtContact44" name="txtContact" #txtContact4="ngModel" placeholder="Contact Number"
@@ -276,9 +276,8 @@
       </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success" [disabled]="frm4.invalid || flagEmail || flagPhoneNo"
-          (click)="signUp(txtName4.value,gender.value,txtEmail4.value,txtPassword4.value,txtContact4.value);">Sign
-          up</button>
+        <button type="button" class="btn btn-success" [disabled]="frm4.invalid || flagEmail || flagPhoneNo" (click)="signUp(txtName4.value,gender.value,txtEmail4.value,txtPassword4.value,txtContact4.value);">Sign up
+        </button>
       </div>
     </div>
   </div>
@@ -348,17 +347,19 @@
       <!--Body-->
       <div class="modal-body">
         <div class="row" *ngFor="let item of cartData">
-            <div class="col-lg-9">
-              <h4>{{item.ProductName}}
-                <br>
-                <small>Qty: {{item.Qty}}</small>
-                <a style="display: block; float: right; right: 5px;" (click)="removeFromCart(item.CartID);"><span class="fa fa-trash"></span></a>
-              </h4>
-            </div>
-            <br>
-            <div class="col-lg-3">
-              <h4>&#8377; {{item.Price}}</h4>
-            </div>
+          <div class="col-lg-9">
+            <h4>{{item.ProductName}}
+              <br>
+              <small>Qty: {{item.Qty}}</small>
+              <a style="display: block; float: right; right: 5px;" (click)="removeFromCart(item.CartID);">
+                <span class="fa fa-trash"></span>
+              </a>
+            </h4>
+          </div>
+          <br>
+          <div class="col-lg-3">
+            <h4>&#8377; {{item.Price}}</h4>
+          </div>
           <hr class="hr-dark">
         </div>
 

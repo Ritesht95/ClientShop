@@ -3,6 +3,7 @@ import { User } from '../classes/user';
 import { SessionService } from '../services/session.service';
 import { environment } from '../../environments/environment';
 import { Product } from '../classes/product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -21,7 +22,8 @@ export class CheckoutComponent implements OnInit {
   constructor(
     private userObj: User,
     private sessionservice: SessionService,
-    private productObj: Product
+    private productObj: Product,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -120,6 +122,8 @@ export class CheckoutComponent implements OnInit {
               this.ShowAlert(true, 'alertDiv');
               this.timeout(false, 'alertDiv');
           });
+        } else {
+          this.router.navigate(['/order']);
         }
       });
   }

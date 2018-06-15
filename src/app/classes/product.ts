@@ -88,4 +88,12 @@ export class Product {
       .pipe(map(res => res.json()));
   }
 
+  searchProduct(SearchTerm: string) {
+    return this.http
+      .get(
+        environment.apiURL + 'Product/ProductSearch.php?search=' + SearchTerm
+      )
+      .pipe(map(res => res.json()));
+  }
+
 }

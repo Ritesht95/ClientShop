@@ -17,6 +17,7 @@ import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { OrderComponent } from './order/order.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AlladressesComponent } from './alladresses/alladresses.component';
+import { ProductsearchComponent } from './productsearch/productsearch.component';
 
 const routes: Routes = [
   { path: '', component: NotfoundComponent },
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'order', canActivate: [AuthGuard], component: OrderComponent },
   { path: 'alladdresses', canActivate: [AuthGuard], component: AlladressesComponent },
   { path: 'checkout', canActivate: [AuthGuard], component: CheckoutComponent },
+  { path: 'productsearch', component: ProductsearchComponent },
   { path: '*', component: NotfoundComponent }
 ];
 
