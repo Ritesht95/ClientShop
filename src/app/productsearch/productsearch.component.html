@@ -1,0 +1,58 @@
+<app-header></app-header>
+<div class="ads-grid_shop">
+  <div class="shop_inner_inf">
+    <h3 class="head">Searched Products</h3>
+    <br>
+    <div class="left-ads-display col-md-12">
+      <div class="wrapper_top_shop">
+        <div class="clearfix"></div>
+        <!-- product-sec1 -->
+        <div class="product-sec1">
+          <div class="col-md-12 text-center" id="divNotFound" style="display: none;">
+            <h1>Ooops! No products found.</h1>
+          </div>
+          <!--/mens-->
+          <div class="col-md-3 product-men" *ngFor="let p of product">
+            <div class="product-shoe-info shoe">
+              <div class="men-pro-item">
+                <div class="men-thumb-item">
+                  <img class="img-responsive" src="{{env}}/assets/ProductImages/{{ p['image']}}" alt="">
+                  <div class="men-cart-pro">
+                    <div class="inner-men-cart-pro">
+                      <a routerLink="/product" [queryParams]="{ProdID: p.ProductID}" class="link-product-add-cart">Quick View</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="item-info-product">
+                  <h4 style="max-height: 35px; min-height: 35px;">
+                    <a href="single.html" style="word-break: break-all;">{{ p.ProductName }}</a>
+                  </h4>
+                  <div class="info-product-price">
+                    <div class="grid_meta">
+                      <div class="product_price">
+                        <div class="grid-price ">
+                          <span class="money" *ngIf="p.FinalPrice === 0">&#8377; {{ p.Price }}</span>
+                          <span class="money" *ngIf="p.FinalPrice !== 0">&#8377; {{ p.FinalPrice }}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="shoe single-item hvr-outline-out">
+                      <form action="#" method="post">
+                        <button class="shoe-cart pshoe-cart" (click)="addToCart(p.ProductID);">
+                          <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+<app-footer></app-footer>

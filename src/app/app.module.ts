@@ -23,6 +23,7 @@ import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { OrderComponent } from './order/order.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AlladressesComponent } from './alladresses/alladresses.component';
+import { ProductsearchComponent } from './productsearch/productsearch.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AlladressesComponent } from './alladresses/alladresses.component';
     OrderDetailComponent,
     OrderComponent,
     CheckoutComponent,
-    AlladressesComponent
+    AlladressesComponent,
+    ProductsearchComponent
   ],
   imports: [
     BrowserModule,

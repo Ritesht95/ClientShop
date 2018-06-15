@@ -66,6 +66,7 @@
       fit: true
     });
   });
+
 </script>
 <!-- FlexSlider -->
 <script src="./assets/js/jquery.flexslider.js"></script>
@@ -77,29 +78,27 @@
       controlNav: "thumbnails"
     });
   });
+
 </script>
 <!-- //FlexSlider-->
 <!--search-bar-->
-<script src="./assets/js/search.js"></script>
+<!-- <script src="./assets/js/search.js"></script> -->
 <!--//search-bar-->
 <!-- price range (top products) -->
 <script src="./assets/js/jquery-ui.js"></script>
 <script>
-  //<![CDATA[
-  $(window).load(function () {
+  $(document).ready(function () {
     $("#slider-range").slider({
       range: true,
-      min: 0,
-      max: 9000,
-      values: [50, 6000],
+      min: +($("#minPriceRange").val()),
+      max: +($("#maxPriceRange").val()),
+      values: [+($("#minPriceRange").val()), +($("#maxPriceRange").val())],
       slide: function (event, ui) {
-        $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+        $("#amount").val(ui.values[0] + "-" + ui.values[1]);
       }
     });
-    $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values",
-      1));
-
-  }); //]]>
+    $("#amount").val($("#slider-range").slider("values", 0) + "-" + $("#slider-range").slider("values", 1));
+  });
 
 </script>
 <!-- //price range (top products) -->
