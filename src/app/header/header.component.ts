@@ -204,24 +204,26 @@ export class HeaderComponent implements OnInit {
 
   checkEmail(Email: string) {
     this.userObj.checkEmail(Email).subscribe(res => {
-      if (res['key'] === 'false') {
+      if (res['key'] === 'true') {
         this.errorMessage = 'Email is already registered.';
         this.ShowAlert(true, 'alertDivReg');
         this.timeout(false, 'alertDivReg');
         this.flagEmail = true;
       } else {
+        this.flagEmail = false;
       }
     });
   }
 
   checkPhoneNo(PhoneNo: string) {
     this.userObj.checkPhoneNo(PhoneNo).subscribe(res => {
-      if (res['key'] === 'false') {
+      if (res['key'] === 'true') {
         this.errorMessage = 'Phone number is already registered.';
         this.ShowAlert(true, 'alertDivReg');
         this.timeout(false, 'alertDivReg');
-        this.flagEmail = true;
+        this.flagPhoneNo = true;
       } else {
+        this.flagPhoneNo = false;
       }
     });
   }

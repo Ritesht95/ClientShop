@@ -65,7 +65,7 @@
     <div class="cd-main-header">
       <ul class="cd-header-buttons">
         <li>
-          <a id = "cd-search-trigger" class="cd-search-trigger" (click)="SearchTrigger($event)">
+          <a id="cd-search-trigger" class="cd-search-trigger" (click)="SearchTrigger($event)">
             <span></span>
           </a>
         </li>
@@ -271,6 +271,7 @@
             <div id="alertDivReg">
               <span *ngIf="errorMessage !== null" class="text-danger">{{errorMessage}}</span>
             </div>
+            {{frm4.invalid }} {{flagEmail }}{{ flagPhoneNo}}
           </div>
         </div>
       </form>
