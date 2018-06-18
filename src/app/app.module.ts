@@ -23,6 +23,8 @@ import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { OrderComponent } from './order/order.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AlladressesComponent } from './alladresses/alladresses.component';
+import { Ng2CarouselamosModule } from 'ng2-carouselamos';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { AlladressesComponent } from './alladresses/alladresses.component';
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    Ng2CarouselamosModule,
+    NgbModule
   ],
   providers: [{provide: APP_BASE_HREF, useValue: '/' }],
   bootstrap: [AppComponent]

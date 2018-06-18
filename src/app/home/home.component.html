@@ -1,6 +1,139 @@
 
 <app-header></app-header>
-<p>
-  home works!
-</p>
+
+<!-- <div id="container">
+  <div ng2-carouselamos class="slides-wrapper"
+    [items]="items"
+    [width]="900"
+    [$prev]="prev"
+    [$next]="next"
+    [$item]="item">
+  </div>
+
+  <ng-template #prev>
+    <img src="../../assets/images/back.png" id="left">
+  </ng-template>
+
+  <ng-template #next>
+    <img src="../../assets/images/right-arrow.png" id="left">
+  </ng-template>
+
+  <ng-template #item let-item ley-i="index">
+   <div class="items">
+    <img src="{{ item.name }}">
+   </div>
+  </ng-template>
+</div>
+ -->
+
+<!-- <ngb-carousel *ngIf="images">
+  <ng-template ngbSlide>
+    <img [src]="images[0]" alt="Random first slide">
+    <div class="carousel-caption">
+      <h3>10 seconds between slides...</h3>
+      <p>This carousel uses customized default values.</p>
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <img [src]="images[1]"  alt="Random second slide">
+    <div class="carousel-caption">
+      <h3>No keyboard...</h3>
+      <p>This carousel uses customized default values.</p>
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <img [src]="images[2]" alt="Random third slide">
+    <div class="carousel-caption">
+      <h3>And no wrap after last slide.</h3>
+      <p>This carousel uses customized default values.</p>
+    </div>
+  </ng-template>
+</ngb-carousel> -->
+
+<div style="margin-bottom: 50px;"> </div>
+
+
+<div class="row">
+    <div class="mid_slider_w3lsagile" >
+        <div class="col-md-3 mid_slider_text">
+          <h5>Deal of the Day</h5>
+          </div>
+        <div class="col-md-9 mid_slider_info" >
+          <div id="myCarousel1" class="carousel slide" data-ride="carousel" >
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <li data-target="#myCarousel1" data-slide-to="p++" class=""></li>
+
+            </ol>
+            <div class="carousel-inner" role="listbox" *ngFor="let o of s; let r = index;">
+              <div class="item" [ngClass]="{'active': (r===0)}">
+                <div class="row">
+                  <div class="col-md-3 col-sm-3 col-xs-3 slidering" *ngFor="let q of o;">
+                    <div class="thumbnail"><img src="{{env}}assets/ProductImages/{{ q }}" alt="Image" style="max-width:100%; max-height: 200px;">
+                    </div>
+                    <p></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a class="left carousel-control" href="#myCarousel1" role="button" data-slide="prev">
+          <span class="fa fa-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+            <a class="right carousel-control" href="#myCarousel1" role="button" data-slide="next">
+          <span class="fa fa-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+            <!-- The Modal -->
+
+          </div>
+        </div>
+
+        <div class="clearfix"  style="margin-bottom: 50px;"> </div>
+      </div>
+</div>
+
+<div class="row">
+    <div class="mid_slider_w3lsagile" >
+      <div class="col-md-3 mid_slider_text">
+        <h5>Recommend for you</h5>
+        </div>
+      <div class="col-md-9 mid_slider_info" >
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" >
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="n++" class=""></li>
+
+          </ol>
+          <div class="carousel-inner" role="listbox" *ngFor="let x of d; let i = index; ">
+            <div class="item" [ngClass]="{'active': (i===0)}">
+              <div class="row">
+                <div class="col-md-3 col-sm-3 col-xs-3 slidering" *ngFor="let y of x;">
+                  <div class="thumbnail">
+                    <img src="{{env}}assets/ProductImages/{{ y[0] }}" alt="Image" style="max-width:100%; max-height: 200px;">
+                    <!-- <h3>{{ y1.FinalPrice }}</h3> -->
+
+                  </div><p> {{ y[1] }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="fa fa-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+          <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="fa fa-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+          <!-- The Modal -->
+
+        </div>
+      </div>
+
+      <div class="clearfix" style="margin-bottom: 50px;"> </div>
+    </div>
+    </div>
+
+
 <app-footer></app-footer>
