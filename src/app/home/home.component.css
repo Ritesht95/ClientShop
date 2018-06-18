@@ -1,0 +1,18 @@
+#container {
+  width: 100%;
+  margin: 5em auto;
+  padding: 0;
+  background: #fff;
+}
+
+.items {
+  width: 100opx;
+  height: 300px;
+  background: #ECECEC;
+}
+
+#left, #right {
+  margin: 30px;
+  height: 10px;
+  widows: 10px;
+}

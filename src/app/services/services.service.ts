@@ -17,6 +17,19 @@ export class ServicesService {
       .pipe(map(res => res.json()));
   }
 
+  getMostSold() {
+    return this._http
+      .get(environment.apiURL + 'Product/MostSold.php')
+      .pipe(map(res => res.json()));
+  }
+
+  getDeal() {
+    return this._http
+      .get(environment.apiURL + 'Product/MostDiscount.php')
+      .pipe(map(res => res.json()));
+  }
+
+
   getAllOrder(id: number) {
     return this._http
       .get(environment.apiURL + 'Order/GetUserOrders.php?id=' + id)
