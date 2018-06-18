@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
+
    // apiURL: 'http://onlinestoreapi.riteshtailor.in/OnlinestoreApi/'
-   apiURL: 'http://192.168.0.110/OnlinestoreApi/'
+   apiURL: 'http://192.168.0.109/OnlinestoreApi/'
 };
 
 /*

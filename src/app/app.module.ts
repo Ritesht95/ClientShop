@@ -25,6 +25,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { AlladressesComponent } from './alladresses/alladresses.component';
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProductsearchComponent } from './productsearch/productsearch.component';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     OrderDetailComponent,
     OrderComponent,
     CheckoutComponent,
-    AlladressesComponent
+    AlladressesComponent,
+    ProductsearchComponent
   ],
   imports: [
     BrowserModule,

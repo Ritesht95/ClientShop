@@ -17,6 +17,7 @@ import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { OrderComponent } from './order/order.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AlladressesComponent } from './alladresses/alladresses.component';
+import { ProductsearchComponent } from './productsearch/productsearch.component';
 
 const routes: Routes = [
   { path: '', component: NotfoundComponent },
@@ -29,10 +30,11 @@ const routes: Routes = [
   { path: 'shop', component: ShopComponent },
   { path: 'address', component: AddressComponent },
   { path: 'editProfile', component: EditProfileComponent },
-  { path: 'orderDetail', component: OrderDetailComponent},
-  { path: 'order', component: OrderComponent },
-  { path: 'alladdresses', component: AlladressesComponent },
-  { path: 'checkout', component: CheckoutComponent },
+  { path: 'orderDetail', canActivate: [AuthGuard], component: OrderDetailComponent},
+  { path: 'order', canActivate: [AuthGuard], component: OrderComponent },
+  { path: 'alladdresses', canActivate: [AuthGuard], component: AlladressesComponent },
+  { path: 'checkout', canActivate: [AuthGuard], component: CheckoutComponent },
+  { path: 'productsearch', component: ProductsearchComponent },
   { path: '*', component: NotfoundComponent }
 ];
 

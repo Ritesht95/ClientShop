@@ -3,9 +3,13 @@ import { User } from '../classes/user';
 import { Session } from 'protractor';
 import { SessionService } from '../services/session.service';
 import { ServicesService } from '../services/services.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { Product } from '../classes/product';
+import { ProductsearchComponent } from '../productsearch/productsearch.component';
+
+declare var jquery: any;
+declare var $: any;
 
 @Component({
   selector: 'app-header',
@@ -23,13 +27,15 @@ export class HeaderComponent implements OnInit {
   flagEmail = false;
   flagPhoneNo = false;
   cartData = '';
+  location: Location;
 
   constructor(
     private userObj: User,
     private sessionservice: SessionService,
     private router: Router,
     private services: ServicesService,
-    private productObj: Product
+    private productObj: Product,
+    private actRoute: ActivatedRoute,
   ) {
     this.loadScripts();
   }
@@ -53,10 +59,13 @@ export class HeaderComponent implements OnInit {
     this.userObj.getUserCart(this.sessionservice.getUserID()).subscribe(res => {
       this.cartData = res['records'];
     });
+    this.loadScripts();
   }
 
   loadScripts() {
-    const dynamicScripts = ['../../assets/js/demo1.js'];
+    const dynamicScripts = [
+      '../../assets/js/demo1.js'
+    ];
     for (let i = 0; i < dynamicScripts.length; i++) {
       const node = document.createElement('script');
       node.src = dynamicScripts[i];
@@ -195,24 +204,26 @@ export class HeaderComponent implements OnInit {
 
   checkEmail(Email: string) {
     this.userObj.checkEmail(Email).subscribe(res => {
-      if (res['key'] === 'false') {
+      if (res['key'] === 'true') {
         this.errorMessage = 'Email is already registered.';
         this.ShowAlert(true, 'alertDivReg');
         this.timeout(false, 'alertDivReg');
         this.flagEmail = true;
       } else {
+        this.flagEmail = false;
       }
     });
   }
 
   checkPhoneNo(PhoneNo: string) {
     this.userObj.checkPhoneNo(PhoneNo).subscribe(res => {
-      if (res['key'] === 'false') {
+      if (res['key'] === 'true') {
         this.errorMessage = 'Phone number is already registered.';
         this.ShowAlert(true, 'alertDivReg');
         this.timeout(false, 'alertDivReg');
-        this.flagEmail = true;
+        this.flagPhoneNo = true;
       } else {
+        this.flagPhoneNo = false;
       }
     });
   }
@@ -227,5 +238,41 @@ export class HeaderComponent implements OnInit {
     this.productObj.removeFromCart(CartID).subscribe(res => {
       this.ngOnInit();
     });
+  }
+
+  SearchTrigger(event) {
+    event.preventDefault();
+    if (
+      document
+        .getElementById('cd-search-trigger')
+        .classList.contains('search-is-visible')
+    ) {
+      document
+        .getElementById('cd-search-trigger')
+        .classList.remove('search-is-visible');
+      document.getElementById('cd-search').classList.remove('is-visible');
+    } else {
+      document
+        .getElementById('cd-search-trigger')
+        .classList.add('search-is-visible');
+      document.getElementById('cd-search').classList.add('is-visible');
+    }
+  }
+
+  search() {
+    const SearchedTerm = (<HTMLInputElement>(
+      document.getElementById('txtSearch')
+    )).value;
+    if (location.pathname !== '/productsearch') {
+      this.router.navigate(['/productsearch'], {
+        queryParams: { srchTerm: SearchedTerm }
+      });
+    } else {
+      this.ngOnInit();
+      this.router.navigate(['/productsearch'], {
+        queryParams: { srchTerm: SearchedTerm }
+      });
+    }
+
   }
 }

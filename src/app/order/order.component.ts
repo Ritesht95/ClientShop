@@ -29,4 +29,13 @@ export class OrderComponent implements OnInit {
     });
   }
 
+  cancelOrder(OrderDetailsID: string) {
+    this.services.cancelOrder(OrderDetailsID).subscribe(
+      res => {
+        alert('Order cancelled successfully');
+        this.ngOnInit();
+      }
+    );
+  }
+
 }

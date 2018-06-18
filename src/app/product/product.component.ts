@@ -43,17 +43,16 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart(Quantity: string) {
-    this.productObj.addToCart(
-      this.sessionservice.getUserID(),
-      this.productID,
-      Quantity
-    ).subscribe(
-      res => {
-        if (res['key'] === 'true') {
-          alert('Added to cart.');
-        }
-      }
-    );
+    if (this.sessionservice.getUserLoggedIn()) {
+      this.productObj
+        .addToCart(this.sessionservice.getUserID(), this.productID, Quantity)
+        .subscribe(res => {
+          if (res['key'] === 'true') {
+            alert('Added to cart.');
+          }
+        });
+    } else {
+      document.getElementById('btnLoginModalOpen').click();
+    }
   }
-
 }
