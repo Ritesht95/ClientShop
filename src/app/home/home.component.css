@@ -16,3 +16,20 @@
   height: 10px;
   widows: 10px;
 }
+
+
+.image-container{
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.overlay-text{
+  position: absolute;
+  top: 8px;
+  right: 20px;
+  background-color: black;
+  padding: 1.5%;
+  opacity: 0.6;
+  border-radius: 2px;
+}

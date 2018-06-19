@@ -98,4 +98,10 @@ export class ServicesService {
       .post(environment.apiURL + 'Product/FilterData.php', data, options)
       .pipe(map(res => res.json()));
   }
+
+  getTopCategories(){
+    return this._http
+      .get(environment.apiURL + 'Category/TopCategory.php')
+      .pipe(map(res => res.json()));
+  }
 }
