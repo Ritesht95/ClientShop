@@ -19,7 +19,7 @@ declare var $: any;
 export class HeaderComponent implements OnInit {
   errorMessage = null;
   successMessage = null;
-  loggedIn = false;
+  loggedIn = 'false';
   webInfo: any = '';
   var1: any = '';
   var2: any = '';
@@ -199,7 +199,9 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.sessionservice.logoutUser();
-    this.router.navigate(['']);
+
+    this.loggedIn = this.sessionservice.getUserLoggedIn();
+    this.router.navigate(['home']);
   }
 
   checkEmail(Email: string) {

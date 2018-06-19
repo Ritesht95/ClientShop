@@ -14,13 +14,13 @@ export class SessionService {
   private PhoneNo;
 
   constructor() {
-    if (this.getUserLoggedIn()) {
+    if (this.getUserLoggedIn() === 'true') {
       this.setFromLocalStorage();
     }
   }
 
   getUserLoggedIn() {
-    this.UserID = localStorage.getItem('CloggedIn');
+    this.IsUserLoggedIn = localStorage.getItem('CloggedIn');
     return this.IsUserLoggedIn;
   }
 
@@ -31,7 +31,7 @@ export class SessionService {
     Name: string
   ) {
     localStorage.setItem('CloggedIn', 'true');
-    this.IsUserLoggedIn = true;
+    this.IsUserLoggedIn = 'true';
     this.setValues(UserID, Email, PhoneNo, Name);
   }
 
@@ -79,5 +79,6 @@ export class SessionService {
     localStorage.removeItem('sessionCEmail');
     localStorage.removeItem('sessionCPhone');
     localStorage.setItem('CloggedIn', 'false');
+    this.IsUserLoggedIn = 'false';
   }
 }
