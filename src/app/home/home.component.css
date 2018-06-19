@@ -1,0 +1,35 @@
+#container {
+  width: 100%;
+  margin: 5em auto;
+  padding: 0;
+  background: #fff;
+}
+
+.items {
+  width: 100opx;
+  height: 300px;
+  background: #ECECEC;
+}
+
+#left, #right {
+  margin: 30px;
+  height: 10px;
+  widows: 10px;
+}
+
+
+.image-container{
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.overlay-text{
+  position: absolute;
+  top: 8px;
+  right: 20px;
+  background-color: black;
+  padding: 1.5%;
+  opacity: 0.6;
+  border-radius: 2px;
+}

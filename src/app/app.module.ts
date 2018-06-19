@@ -25,6 +25,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { AlladressesComponent } from './alladresses/alladresses.component';
 import { ProductsearchComponent } from './productsearch/productsearch.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +54,7 @@ import { ProductsearchComponent } from './productsearch/productsearch.component'
     HttpModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AppRoutingModule,
+    AppRoutingModule
   ],
   providers: [{provide: APP_BASE_HREF, useValue: '/' }],
   bootstrap: [AppComponent]

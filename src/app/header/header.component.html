@@ -4,7 +4,7 @@
     <div class="header_agileits">
       <div class="logo inner_page_log">
         <h1>
-          <a class="navbar-brand" routerLink="/">
+          <a class="navbar-brand" routerLink="/home">
             <span>{{ var3 }}</span>
             <i>{{ var2 }}</i>
           </a>
@@ -18,7 +18,7 @@
         <nav>
           <ul>
             <li>
-              <a routerLink="/" class="active">Home</a>
+              <a routerLink="/home" class="active">Home</a>
             </li>
             <li *ngIf="loggedIn">
               <a routerLink="/profile">Profile</a>
@@ -31,7 +31,7 @@
               <a routerLink="/cat">Categories</a>
             </li>
             <li>
-              <a routerLink="contact.html">Contact</a>
+              <a routerLink="/contactUs">Contact</a>
             </li>
             <li *ngIf="loggedIn">
               <a style="cursor: pointer" data-toggle="modal" data-target="#changePassModal" (click)="closeSidebar();">Change Password</a>
@@ -86,7 +86,7 @@
 
       <ul class="short">
         <li>
-          <a href="/">Home</a>
+          <a routerLink="/home">Home</a>
           <i>|</i>
         </li>
         <li>Shop</li>

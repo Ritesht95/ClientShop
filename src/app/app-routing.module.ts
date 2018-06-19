@@ -20,7 +20,7 @@ import { AlladressesComponent } from './alladresses/alladresses.component';
 import { ProductsearchComponent } from './productsearch/productsearch.component';
 
 const routes: Routes = [
-  { path: '', component: NotfoundComponent },
+  { path: '', component: HomeComponent },
   { path: 'cat', component: CategoriesComponent },
   { path: 'profile', canActivate: [AuthGuard], component: ProfileComponent },
   { path: 'product', component: ProductComponent },
