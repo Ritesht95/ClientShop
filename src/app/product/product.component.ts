@@ -48,7 +48,7 @@ export class ProductComponent implements OnInit {
         .addToCart(this.sessionservice.getUserID(), this.productID, Quantity)
         .subscribe(res => {
           if (res['key'] === 'true') {
-            alert('Added to cart.');
+            document.getElementById('btnOpenCart').click();
           }
         });
     } else {
