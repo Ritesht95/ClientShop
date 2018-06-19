@@ -77,7 +77,7 @@ export class ShopComponent implements OnInit {
         .addToCart(this.sessionservice.getUserID(), ProductID, '1')
         .subscribe(res => {
           if (res['key'] === 'true') {
-            alert('Added to cart.');
+            document.getElementById('btnOpenCart').click();
           }
         });
     } else {
