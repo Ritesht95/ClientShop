@@ -49,8 +49,8 @@
 <div class="grids_sec_2" style="border-top: 5px solid white; border-bottom: 5px solid white">
   <div class="style-grids_main" style="width: 100%">
     <div class="col-md-4 grids_sec_2_left" *ngFor="let x of TopCategoty; let i = index;">
-        <div class="style-image-2" *ngIf="i === 1">
-            <img src="{{env}}Assets/CategoryImages/{{x.CategoryImage}}" alt="{{x.CategoryImageAlt}}" style="height: 200px; width: 250px;">
+        <div class="style-image-2  text-center" *ngIf="i === 1">
+            <img src="{{env}}Assets/CategoryImages/{{x.CategoryImage}}" alt="{{x.CategoryImageAlt}}" style="height: 260px; width: 250px;">
             <!-- <div class="style-grid-2-text">
               <h3>Air force</h3>
             </div> -->
@@ -59,19 +59,19 @@
         <div class="style-grid-2-text_info">
           <h3>{{x.CategoryName}}</h3>
           <p>{{x.CategoryDesc.substr(0,150) }}</p>
-          <div class="shop-button">
+          <div class="shop-button" [ngClass]="{'two': (i===1)}">
             <a routerLink="/shop" [queryParams]="{id: x.CategoryID}">Shop Now</a>
           </div>
         </div>
       </div>
-      <div class="style-image-2" *ngIf="i !== 1">
-        <img src="{{env}}Assets/CategoryImages/{{x.CategoryImage}}" alt="{{x.CategoryImageAlt}}" style="height: 200px; width: 250px;">
+      <div class="style-image-2 text-center" *ngIf="i !== 1">
+        <img src="{{env}}Assets/CategoryImages/{{x.CategoryImage}}" alt="{{x.CategoryImageAlt}}" style="height: 260px; width: 250px;">
         <!-- <div class="style-grid-2-text">
           <h3>Air force</h3>
         </div> -->
       </div>
     </div>
-    
+
     <div class="clearfix"></div>
   </div>
 </div>
