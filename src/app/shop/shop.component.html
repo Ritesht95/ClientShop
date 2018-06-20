@@ -64,7 +64,7 @@
             <div class="product-shoe-info shoe">
               <div class="men-pro-item">
                 <div class="men-thumb-item">
-                  <img class="img-responsive" src="{{env}}/assets/ProductImages/{{ p['image'][0]['image'] }}" alt="">
+                  <img class="img-responsive" src="{{env}}/assets/ProductImages/{{ p['image'][0]['image'] }}" alt="" style="height: 270px !important;">
                   <div class="men-cart-pro">
                     <div class="inner-men-cart-pro">
                       <a routerLink="/product" [queryParams]="{ProdID: p.ProductID}" class="link-product-add-cart">Quick View</a>
@@ -73,7 +73,7 @@
                 </div>
                 <div class="item-info-product">
                   <h4 style="max-height: 35px; min-height: 35px;">
-                    <a href="single.html" style="word-break: break-all;">{{ p.ProductName }}</a>
+                    <a style="word-break: break-all;">{{ p.ProductName }}</a>
                   </h4>
                   <div class="info-product-price">
                     <div class="grid_meta">
