@@ -72,7 +72,7 @@ export class ShopComponent implements OnInit {
   }
 
   addToCart(ProductID: string) {
-    if (this.sessionservice.getUserLoggedIn()) {
+    if (this.sessionservice.getUserLoggedIn() === 'true') {
       this.productObj
         .addToCart(this.sessionservice.getUserID(), ProductID, '1')
         .subscribe(res => {
