@@ -7,7 +7,7 @@
       <div class="grid images_4_of_2">
         <div class="flexslider">
           <ul class="slides">
-            <li *ngFor="let img of productData.image" attr.data-thumb="{{env}}Assets/ProductImages/{{img.image}}">
+            <li *ngFor="let img of productData['image']" attr.data-thumb="{{env}}Assets/ProductImages/{{img.image}}">
               <div class="thumb-image">
                 <img src="{{env}}Assets/ProductImages/{{img.image}}" data-imagezoom="true" class="img-responsive proimg"> </div>
             </li>
@@ -17,13 +17,13 @@
       </div>
     </div>
     <div class="col-md-8 single-right-left simpleCart_shelfItem">
-      <h3>{{ productData.ProductName }}</h3>
-      <p *ngIf="productData.FinalPrice !== 0">
-        <span class="item_price">&#8377; {{ productData.FinalPrice }}</span>
-        <del>&#8377; {{ productData.Price }}</del>
+      <h3>{{ productData['ProductName'] }}</h3>
+      <p *ngIf="productData['FinalPrice'] !== 0">
+        <span class="item_price">&#8377; {{ productData['FinalPrice'] }}</span>
+        <del>&#8377; {{ productData['Price'] }}</del>
       </p>
-      <p *ngIf="productData.FinalPrice === 0">
-        <span class="item_price">&#8377; {{ productData.Price }}</span>
+      <p *ngIf="productData['FinalPrice'] === 0">
+        <span class="item_price">&#8377; {{ productData['Price'] }}</span>
       </p>
       <!-- <div class="description">
         <h5>Check delivery, payment options and charges at your location</h5>
@@ -37,7 +37,7 @@
         <div class="color-quality-right">
           <h5>Quality :</h5>
           <form action="#" method="post">
-          <input type="number" min="1" style="width:200px !important;" max="{{productData.CurrentStock}}" class="form-control" name="txtQTY"
+          <input type="number" min="1" style="width:200px !important;" max="{{productData['CurrentStock']}}" class="form-control" name="txtQTY"
             id="txtQTY" #txtQTY="ngModel" ngModel>
           </form>
         </div>
@@ -49,7 +49,7 @@
         <div class="color-quality-right">
           <h5>Description :</h5>
           <p>
-            <small>{{productData.ProductDesc}}</small>
+            <small>{{productData['ProductDesc']}}</small>
           </p>
         </div>
       </div>
@@ -59,7 +59,7 @@
       <div class="color-quality">
         <div class="color-quality-right">
           <h5>Type :
-            <small>{{productData.CategoryName}}</small>
+            <small>{{productData['CategoryName']}}</small>
           </h5>
         </div>
       </div>
@@ -69,7 +69,7 @@
       <div class="color-quality">
         <div class="color-quality-right">
           <h5>Unit :
-            <small>{{productData.Unit}}</small>
+            <small>{{productData['Unit']}}</small>
           </h5>
         </div>
       </div>
@@ -136,7 +136,7 @@
         <div class="resp-tabs-container">
           <div class="tab3">
             <div class="row">
-              <div class="spacing col-lg-6 col-md-6 col-sm-12 col-xs-12" *ngFor="let property of productData.Properties">
+              <div class="spacing col-lg-6 col-md-6 col-sm-12 col-xs-12" *ngFor="let property of productData['Properties']">
                 <h3>{{property.PropertyName}}: {{property.Value}}</h3>
               </div>
             </div>
