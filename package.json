@@ -36,7 +36,7 @@
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26",
     "typescript": "~2.7.2",
-    "typescript-require": "^0.2.10",
+    "typescript-require": "^0.2.10"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.0",
